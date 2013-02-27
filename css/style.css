@@ -191,6 +191,7 @@ button                         { color: #fff; padding: 0; border: 0; font-family
 .page-video {
     padding: 340px 0 0;
     position: relative;
+    border-top: 1px solid;
 }
 .page-video .rain {
     width: 100%;
@@ -212,9 +213,9 @@ button                         { color: #fff; padding: 0; border: 0; font-family
     /*
     width: 100%;
     */
-    width: 1713px;
+    width: 1712px;
     height: 168px;
-    margin: 0 0 0 -857px;
+    margin: 0 0 0 -856px;
     left: 100%;
     top: -37px;
     background: url(../images/rain_clouds.png) center 0 no-repeat;

@@ -4,11 +4,9 @@ $(document).ready(function(){
     $window = $(window);
     
     // Set the min-height of each section to the window's height
-    //var windowHeight = setSectionMinHeight();
     setSectionMinHeight();
     
     $(window).resize(function(){
-        //windowHeight = setSectionMinHeight();
         setSectionMinHeight();
     });
     
@@ -20,36 +18,50 @@ $(document).ready(function(){
     });
     
     
-    $('[data-fade="true"]').each(function(){
+    $('[data-require-position="true"]').each(function() {
+        
+        setPositionData($(this));
+        
+    }); // each data-type
+    
+    
+    $('[data-fade="true"]').each(function() {
         
         decorationFade($(this));
         
     }); // each data-type
     
     
-    $('[data-slide="to-left"]').each(function(){
+    $('[data-slide="to-left"]').each(function() {
         
         slideToLeft($(this));
-        $(this).addClass('HERE');
+        
     }); // each data-type
     
     
-    $('[data-slide="to-right"]').each(function(){
+    $('[data-slide="to-right"]').each(function() {
         
         slideToRight($(this));
         
     }); // each data-type
     
     
-    $('[data-pin="true"]').each(function(){
+    $('[data-pin="true"]').each(function() {
         
         pinDecoration($(this));
-        $(this).addClass('HERE-2');
         
     }); // each data-type
     
+    
+    $('[data-pin-on-top="true"]').each(function() {
+        
+        pinOnTop($(this));
+        
+    }); // each data-type
+    
+    
     // For each element that has a data-type attribute
-    $('section[data-type="background"]').each(function(){
+    $('section[data-type="background"]').each(function() {
     
         // Store some variables based on where we are
         var $self = $(this),
@@ -84,28 +96,30 @@ $(document).ready(function(){
     });	// each data-type
 
     function setSectionMinHeight() {
+        
         var windowHeight = $(window).height();
         
         $('[data-full-height="true"]').css('min-height', windowHeight);
         
-        //return windowHeight;
     }
     
     function decorationFade($self) {
         
         // Store some variables based on where we are
-        var offsetCoords = $self.offset(),
-            topOffset = offsetCoords.top;
+        //var offsetCoords = $self.offset(),
+        //    topOffset = offsetCoords.top;
+        var dataTopShift = parseInt($self.attr('data-top-shift')),
+            dataTopOffset = parseInt($self.attr('data-top-offset'));
         
         $(window).scroll(function(){
             
             // If this section is in view
-            if ( ($window.scrollTop() + $window.height()) > (topOffset) &&
-            ( (topOffset + $self.height()) > $window.scrollTop() ) ) {
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
                 
                 //var selfOpacity = 1 - (($self.offset().top - $window.scrollTop()) / ($window.height() / 100)) / 100;
                 
-                $self.css('opacity', 1 - (($self.offset().top - $window.scrollTop()) / ($window.height() / 100)) / 100);
+                $self.css('opacity', 1 - ((dataTopOffset - $window.scrollTop()) / ($window.height() / 100)) / 100);
                 
             } // in view
             
@@ -116,25 +130,31 @@ $(document).ready(function(){
     function slideToLeft($self) {
         
         // Store some variables based on where we are
-        var offsetCoords = $self.offset(),
-            topOffset = offsetCoords.top;
+        var dataTopShift = parseInt($self.attr('data-top-shift')),
+            dataTopOffset = parseInt($self.attr('data-top-offset')) - dataTopShift;
         
         $(window).on('scroll resize', function(){
             
+            var percent = 0;
+            
             // If this section is in view
-            if ( ($window.scrollTop() + $window.height()) > (topOffset) &&
-            ( (topOffset + $self.height()) > $window.scrollTop() ) ) {
+            if ( ($window.scrollTop() + $window.height()) >= (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) >= $window.scrollTop() ) ) {
                 
-                if (($self.offset().top - $window.scrollTop()) > 0) {
+                if ((dataTopOffset - $window.scrollTop()) >= 0) {
                     
-                    // shifting in percentage of window width plus block width
-                    // and discending from 100% to 50%
-                    var selfLeftPosition = ($(window).width() / 2) + (($(window).width() / 2) + ($self.width() / 2)) * (($self.offset().top - $window.scrollTop()) / ($window.height()));
-                    
+                    percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
                 }
-                $self.css('left', selfLeftPosition + 'px');
+            } else {
                 
+                percent = 1;
             } // in view
+            
+            //var percentWidth = (($(window).width() / 2) + (($self.width()) / 2)) * percent;
+            var selfLeftPosition = ($(window).width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent;
+            
+            $self.css('left', selfLeftPosition + 'px');
+            
             
         }); // window scroll
         
@@ -143,23 +163,30 @@ $(document).ready(function(){
     function slideToRight($self) {
         
         // Store some variables based on where we are
-        var offsetCoords = $self.offset(),
-            topOffset = offsetCoords.top;
+        var dataTopShift = parseInt($self.attr('data-top-shift')),
+            dataTopOffset = parseInt($self.attr('data-top-offset')) - dataTopShift;
         
         $(window).on('scroll resize', function(){
             
+            var percent = 0;
+            
             // If this section is in view
-            if ( ($window.scrollTop() + $window.height()) > (topOffset) &&
-            ( (topOffset + $self.height()) > $window.scrollTop() ) ) {
+            if ( ($window.scrollTop() + $window.height()) >= (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) >= $window.scrollTop() ) ) {
                 
-                if (($self.offset().top - $window.scrollTop()) > 0) {
+                if ((dataTopOffset - $window.scrollTop()) >= 0) {
                     
-                    // shifting in percentage of window width plus block width
-                    var selfLeftPosition = - ($(window).width() / 2) + (($(window).width() / 2) + ($self.width() / 2)) * (($self.offset().top - $window.scrollTop()) / ($window.height()));
+                    percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
                 }
-                $self.css('left', - selfLeftPosition + 'px');
+            } else {
                 
+                percent = 1;
             } // in view
+            
+            //var percentWidth = (($(window).width() / 2) + (($self.width()) / 2)) * percent;
+            var selfLeftPosition = - ($(window).width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent;
+            
+            $self.css('left', - selfLeftPosition + 'px');
             
         }); // window scroll
         
@@ -167,52 +194,40 @@ $(document).ready(function(){
     
     function pinDecoration($self) {
         
+        if ($self.attr('data-top-shift') == undefined) {
+            $self.attr('data-top-shift', parseInt($self.css('top')));
+        }
+        
         // Store some variables based on where we are
-        var offsetCoords = $self.offset(),
-            topOffset = offsetCoords.top;
+        var dataTopShift = parseInt($self.attr('data-top-shift'));
         
         $(window).on('scroll', function(){
             
-                if ($self.attr('data-top-offset') == undefined) {
-                    $self.attr('data-top-offset', parseInt($self.css('top')));
-                }
+            if (dataTopShift + $window.scrollTop() < dataTopShift + $self.closest('.page').outerHeight()) {
                 
-                var dataTopOffset = parseInt($self.attr('data-top-offset'));
+                $self.css('top', dataTopShift + $window.scrollTop() + 'px');
+            }
+            
+        }); // window scroll
+    }
+    
+    function pinOnTop($self) {
+        
+        // Store some variables based on where we are
+        var dataTopShift = parseInt($self.attr('data-top-shift')),
+            dataTopOffset = parseInt($self.attr('data-top-offset'));
+            
+        $(window).on('scroll', function(){
+            
+            if ($window.scrollTop() <
+                $self.closest('[data-page-has-pin="true"]').prev('.page').outerHeight()) {
                 
-                //if ($self.offset().top < parseInt($self.attr('data-top-offset')) + $window.height()) {
-                if ($window.scrollTop() + dataTopOffset < parseInt($self.attr('data-top-offset')) + $self.closest('[data-page-has-pin="true"]').outerHeight()) {
-                    
-                    //console.log($self.offset().top);
-                    
-                    $self.css('top', parseInt($self.attr('data-top-offset')) + $window.scrollTop() + 'px');
-                }
-            // If this section is in view
-            if ( ($window.scrollTop() + $window.height()) > (topOffset) &&
-            ( (topOffset + $self.height()) > $window.scrollTop() ) ) {
+                $self.css('top', $window.scrollTop() - dataTopOffset + (dataTopShift * 2));
                 
-                
-                
-                /*
-                if ((($self.offset().top - $window.scrollTop()) > 0) || ($self.offset().top == 0)) {
-                    $self.css('position', 'fixed');
-                }
-                else {
-                    $self.css('position', 'absolute');
-                }
-                
-                $self.css
-                */
-                /*
-                if (($self.offset().top - $window.scrollTop()) > 0) {
-                    
-                    // shifting in percentage of window width plus block width
-                    var selfLeftPosition = - ($(window).width() / 2) + (($(window).width() / 2) + ($self.width() / 2)) * (($self.offset().top - $window.scrollTop()) / ($window.height()));
-                }
-                $self.css('left', - selfLeftPosition + 'px');
-                */
-                
-                
-            } // in view
+            }
+            else {
+                $self.css('top', dataTopShift);
+            }
             
         }); // window scroll
     }
@@ -225,7 +240,16 @@ $(document).ready(function(){
         alert(rgb);
     }
     
-    
+    function setPositionData($self) {
+        
+        if ($self.attr('data-top-shift') == undefined) {
+            $self.attr('data-top-shift', parseInt($self.css('top')));
+        }
+        
+        if ($self.attr('data-top-offset') == undefined) {
+            $self.attr('data-top-offset', parseInt($self.offset().top));
+        }
+    }
     
 }); // document ready
 
