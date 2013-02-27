@@ -1,0 +1,225 @@
+/*----------------------------------------------------------------------------------*/
+/*------------------------------RESET DEFAULT STYLES--------------------------------*/
+/*----------------------------------------------------------------------------------*/
+html		                        { width:100%; height:100%; }
+body                            { padding:0; margin:0; font: 14px 'PT Sans', Arial, Verdana, Helvetica, sans-serif;
+    background: #FFF; color:#000; height: 100%; min-width: 1200px; }
+div,p,a,span,em,strong,img,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,td,tr,form,fieldset,label,select,checkbox,input,textarea {
+    padding:0;
+    margin:0;
+    outline:none;
+    list-style:none;
+}
+select, input, textarea        { font-size: 13px; font-family: 'PT Sans', Arial, Verdana, Helvetica, sans-serif; vertical-align:middle; }
+textarea                       { vertical-align:top; }
+:focus                         { outline:none; }
+input[type=submit]             { cursor:pointer; }
+input[type="password"]				 { font-family: 'PT Sans', Arial; }
+input[type="checkbox"]				 { vertical-align: baseline !important; margin-top: 2px !important; }
+img, fieldset                  { border:0; }
+table                          { border-collapse:collapse; border-spacing:0; }
+a:link, a:visited              { color:#0085D2; text-decoration:none; }
+a:hover                        { text-decoration:underline; }
+button                         { color: #fff; padding: 0; border: 0; font-family: 'PT Sans', Arial, Verdana, Helvetica, sans-serif; }
+
+
+
+/*----------------------------------------------------------------------------------*/
+/*--------------------------------> Top navigation <--------------------------------*/
+/*----------------------------------------------------------------------------------*/
+.nav {
+    width: 660px;
+    margin: 0 0 0 -330px;
+    overflow: hidden;
+    position: fixed;
+    left: 50%;
+    top: 37px;
+    background: rgba(255,255,255, 0.1);
+    z-index: 100;
+}
+.nav li {
+    float: left;
+    margin: 0 0 0 15px;
+}
+.nav a {
+    color: #29ABE2;
+    padding: 3px 10px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+.nav .active a, .nav a:hover {
+    color: #FFF;
+    background: #29ABE2;
+}
+.nav, .nav .active a, .nav a:hover {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+/*----------------------------------------------------------------------------------*/
+/*----------------------------------> First page <----------------------------------*/
+/*----------------------------------------------------------------------------------*/
+.section-first {
+    background: #F5F5F5; 
+    background: #A1CEE7; 
+    /*
+    161, 206, 231
+    245, 245, 245
+    */
+}
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.section {
+}
+
+.decor {
+    position: absolute;
+    display: block;
+    left: 50%;
+}
+
+
+.page {
+    width: 1200px;
+    margin: 0 auto;
+}
+.page-first {
+    position: relative;
+    padding: 100px 0 0;
+}
+.page-first .logo {
+    display: block;
+    width: 320px;
+    height: 131px;
+    margin: 0 auto;
+}
+
+
+.section .page-first .video-block {
+    margin-top: 34px;
+}
+.section .video-block {
+    width: 625px;
+    height: 350px;
+    margin: 0 auto;
+    position: relative;
+
+    -webkit-box-shadow: 6px 6px 2px 0 #9F9F9F;
+    -moz-box-shadow: 6px 6px 2px 0 #9F9F9F;
+    box-shadow: 6px 6px 2px 0 #9F9F9F;
+}
+.page-first .video-block .video-hint {
+    width: 225px;
+    height: 150px;
+    left: auto;
+    top: 55px;
+    right: -262px;
+    background: url(../images/yes_video.png) no-repeat;
+}
+.page-video .video-block .video-hint {
+    width: 263px;
+    height: 150px;
+    left: -280px;
+    top: 65px;
+    background: url(../images/yes_left.png) no-repeat;
+}
+
+.page-first .media-block {
+    overflow: hidden;
+    width: 365px;
+    margin: 0 auto;
+    padding: 46px 0 140px 260px;
+}
+.page-first .media-block li {
+    float: left;
+    margin: 0 19px 0 0;
+}
+.page-first .media-block a {
+    display: block;
+    height: 23px;
+}
+.page-first .media-block .vm {
+    width: 26px;
+    background: url(../images/icon_vimeo.png) no-repeat;
+}
+.page-first .media-block .tw {
+    width: 27px;
+    background: url(../images/icon_twitter.png) no-repeat;
+}
+.page-first .media-block .fb {
+    width: 14px;
+    background: url(../images/icon_facebook.png) no-repeat;
+}
+
+
+.section .sun {
+    width: 238px;
+    height: 228px;
+    margin: 0 0 0 -633px;
+    top: -56px;
+    background: url(../images/sun.png) no-repeat;
+}
+
+.section .cloud-white {
+    width: 171px;
+    height: 70px;
+    left: 50%;
+    background: url(../images/cloud.png) no-repeat;
+}
+.section .cloud-white.one {
+    margin: 0 0 0 -429px;
+    top: 8px;
+}
+.section .cloud-white.two {
+    margin: 0 0 0 271px;
+    top: 34px;
+}
+.section .cloud-white.three {
+    margin: 0 0 0 474px;
+    top: 0px;
+}
+
+
+
+/*----------------------------------------------------------------------------------*/
+/*----------------------------------> Video page <----------------------------------*/
+/*----------------------------------------------------------------------------------*/
+.page-video {
+    padding: 340px 0 0;
+    position: relative;
+}
+.page-video .rain {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url(../images/rain.png) center 120px;
+    opacity: 0;
+}
+.page-video .umbrella {
+    width: 688px;
+    height: 201px;
+    top: 152px;
+    margin: 0 0 0 -344px;
+    background: url(../images/umbrella.png) no-repeat;
+}
+
+.page-video .rain-clouds {
+    /*
+    width: 100%;
+    */
+    width: 1713px;
+    height: 168px;
+    margin: 0 0 0 -857px;
+    left: 100%;
+    top: -37px;
+    background: url(../images/rain_clouds.png) center 0 no-repeat;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------*/
