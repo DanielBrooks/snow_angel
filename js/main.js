@@ -1,3 +1,10 @@
+/*
+ * TO DO:
+ * - to cache data-top-offset, data-top-shift
+ *
+ *
+ */
+
 $(document).ready(function(){
     
     // Cache the Window object
@@ -58,6 +65,15 @@ $(document).ready(function(){
         pinOnTop($(this));
         
     }); // each data-type
+    
+    
+    $('[data-bg-color-change="true"]').each(function() {
+        
+        $(this).data('color-start', $(this).attr('data-color-start').toUpperCase());
+        $(this).data('color-stop', $(this).attr('data-color-stop').toUpperCase());
+        
+        changeBgColor($(this));
+    });
     
     
     // For each element that has a data-type attribute
@@ -203,7 +219,7 @@ $(document).ready(function(){
         
         $(window).on('scroll', function(){
             
-            if (dataTopShift + $window.scrollTop() < dataTopShift + $self.closest('.page').outerHeight()) {
+            if (dataTopShift + $window.scrollTop() < dataTopShift + $self.closest('[data-type="page"]').outerHeight()) {
                 
                 $self.css('top', dataTopShift + $window.scrollTop() + 'px');
             }
@@ -220,7 +236,7 @@ $(document).ready(function(){
         $(window).on('scroll', function(){
             
             if ($window.scrollTop() <
-                $self.closest('[data-page-has-pin="true"]').prev('.page').outerHeight()) {
+                $self.closest('[data-page-has-pin="true"]').prev('[data-type="page"]').outerHeight()) {
                 
                 $self.css('top', $window.scrollTop() - dataTopOffset + (dataTopShift * 2));
                 
@@ -232,12 +248,38 @@ $(document).ready(function(){
         }); // window scroll
     }
     
-    function changeBgColor() {
-        var s = "#ff0000";
-        var patt = /^#([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})$/;
-        var matches = patt.exec(s);
-        var rgb = "rgb("+parseInt(matches[1], 16)+","+parseInt(matches[2], 16)+","+parseInt(matches[3], 16)+");";
-        alert(rgb);
+    function changeBgColor($self) {
+        var start = $self.data('color-start'),
+            stop = $self.data('color-stop'),
+            
+            dataTopOffset = parseInt($self.attr('data-top-offset')),
+            
+            patt = /([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})$/,
+            
+            matchesStart = patt.exec(start),
+            matchesStop = patt.exec(stop);
+            
+            rStep = (parseInt(matchesStart[1], 16) - parseInt(matchesStop[1], 16)) / 100;
+            gStep = (parseInt(matchesStart[2], 16) - parseInt(matchesStop[2], 16)) / 100;
+            bStep = (parseInt(matchesStart[3], 16) - parseInt(matchesStop[3], 16)) / 100;
+        
+        
+        $(window).on('scroll', function(){
+            
+            
+            if ( ($window.scrollTop() - dataTopOffset) <= $self.height() ) {
+                
+                var percent = Math.round((($window.scrollTop() - dataTopOffset) / $self.height()) * 100);
+                
+                var rgb = 'rgb(' + (parseInt(matchesStart[1], 16) - Math.round(rStep * percent)) + ','
+                + (parseInt(matchesStart[2], 16) - Math.round(gStep * percent)) + ','
+                + (parseInt(matchesStart[3], 16) - Math.round(bStep  * percent)) + ')';
+                
+                $self.closest('.section').attr('style', 'background:' + rgb);
+            }
+            
+        }); // window scroll
+        
     }
     
     function setPositionData($self) {
@@ -255,84 +297,3 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-/*
-$(document).ready(function(){
-    //Cache the Window object
-    //$window = $(window);
-    
-    //var windowHeight = $(window).height();
-    //alert(wh);
-    
-    //$(".section-first").css("height", windowHeight + 800);
-});
-*/
-
-
-/*
-$(document).ready(function() {
-  var controller = $.superscrollorama();
-  
-//(new TimelineLite({onComplete:initScrollAnimations}));
-    (new TimelineLite({onComplete:initScrollAnimations}));
-    
-    function initScrollAnimations() {
-        
-        var controller = $.superscrollorama();
-    
-        controller.addTween('.sun', 
-            
-                    TweenMax.fromTo($('.sun'), .75, 
-                        {css:{left: -33, top: -56}}, 
-                        {css:{left: -33, top: 200}})
-                        
-                )
-
-    };
-*/
-
-  /*
-    controller.addTween('.sun', 
-      TweenMax.from($('#fade'),.5,{
-        css:{opacity:0}}),
-        0, // scroll duration of tween (0 means autoplay)
-        200); // offset the start of the tween by 200 pixels
-
-    
-    
-    controller.addTween(
-        '.first-page',
-        (new TimelineLite())
-            .append([
-                TweenMax.To($('.sun'), 1, 
-                    {css:{top: 200}, immediateRender:true}),
-                TweenMax.To($('.logo'), 1, 
-                    {css:{paddingLeft: 200}, immediateRender:true})
-            ]),
-        5000 // scroll duration of tween
-    );
-  
-    
-controller.addTween('.sun', 
-    TweenMax.to($('#move-it'), .5, 
-        {css:{left: 200}})); 
-  
-    var pinAnimations = new TimelineLite();
-    pinAnimations
-        .append([
-            TweenMax.to($('.sun'), 5, {css:{top: 500}}),
-            TweenMax.to($('.logo'), .5, {css:{paddingLeft: 100}})
-        ], .5);
-    
-
-});
-*/
