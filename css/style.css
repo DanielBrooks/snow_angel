@@ -12,7 +12,8 @@ div,p,a,span,em,strong,img,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,td,tr,form,
 }
 select, input, textarea        { font-size: 13px; vertical-align:middle; }
 textarea                       { vertical-align:top; }
-:focus                         { outline:none; }
+a:focus                         { outline:none; }
+a::-moz-focus-inner             { border:0; }
 input[type=submit]             { cursor:pointer; }
 input[type="password"]				 {  }
 input[type="checkbox"]				 { vertical-align: baseline !important; margin-top: 2px !important; }
@@ -145,6 +146,7 @@ select, input, textarea, input[type="password"], button {
     position: absolute;
     top: 0;
     left: 0;
+    height: 1px;
 }
 
 .textures {
@@ -344,7 +346,7 @@ select, input, textarea, input[type="password"], button {
     width: 980px;
     height: 146px;
     top: 25px;
-    margin: 0 0 0 -490px;
+    margin: -60px 0 0 -490px;
     background: url(../images/submarine.png) no-repeat;
 }
 .page-clients .mine-left {
@@ -388,6 +390,15 @@ select, input, textarea, input[type="password"], button {
     text-align: center;
     vertical-align: middle;
 }
+/*----------------------------------------------------------------------------------*/
+/*--------------------------------> Portfolio page <--------------------------------*/
+/*----------------------------------------------------------------------------------*/
+.page-portfolio {
+    position: relative;
+    padding: 165px 0 0;
+}
+
+
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------*/

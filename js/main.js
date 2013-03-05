@@ -5,6 +5,7 @@
  *
  */
 
+
 $(document).ready(function(){
     
     // Cache the Window object
@@ -84,24 +85,29 @@ $(document).ready(function(){
     });
     
     
-    $('.nav a').click(function() {
+    $('.nav a').click(function(e) {
         
-        //$window.scroll();
-        //console.log(2);
         makeAnchor(e, $(this));
         
-        /*
-        $('.rain').each(function(){
-            //var dataTopShift = parseInt($(this).attr('data-top-shift'));
-            //alert(1);
-            $(this).css('top', parseInt($(this).attr('data-top-shift')));
-            //alert(2);
-            if ($(this).hasClass('rain')) {
-                //console.log(1);
+    });
+    
+    
+    $('.anchor').each(function() {
+        
+        var $self = $(this);
+        
+        $window.scroll(function() {
+            
+            if ( ($window.scrollTop() + $window.height()) > ($self.offset().top) &&
+            ( ($self.offset().top + $self.height()) > $window.scrollTop() ) ) {
+                
+                $('.nav li').removeClass('active');
+                $('.nav').find('a[href="#' + $self.attr('name') + '"]').closest('li').addClass('active');
+                
             }
-            //console.log(1);
+            
         });
-        */
+        
     });
     
     
@@ -153,7 +159,8 @@ $(document).ready(function(){
         }); // window scroll
     
     });	// each data-type
-
+    
+    
     function setSectionMinHeight() {
         
         var windowHeight = $(window).height();
@@ -165,8 +172,6 @@ $(document).ready(function(){
     function decorationFade($self) {
         
         // Store some variables based on where we are
-        //var offsetCoords = $self.offset(),
-        //    topOffset = offsetCoords.top;
         var dataTopShift = parseInt($self.attr('data-top-shift')),
             dataTopOffset = parseInt($self.attr('data-top-offset'));
         
@@ -176,20 +181,11 @@ $(document).ready(function(){
             if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
             ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
                 
-                //var selfOpacity = 1 - (($self.offset().top - $window.scrollTop()) / ($window.height() / 100)) / 100;
-                
                 $self.css('opacity', 1 - ((dataTopOffset - $window.scrollTop()) / ($window.height() / 100)) / 100);
                 
             } // in view
             
         }); // window scroll
-        
-        $('.nav a').on('click', function(e){
-            
-            makeAnchor(e, $(this));
-            //makeScript();
-            
-        });
         
     }
     
@@ -220,7 +216,6 @@ $(document).ready(function(){
             var selfLeftPosition = ($(window).width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent;
             
             $self.css('left', selfLeftPosition + 'px');
-            
             
         }); // window scroll
         
@@ -285,26 +280,6 @@ $(document).ready(function(){
             
         $(window).on('scroll', function(){
             
-            makeScript();
-            
-        }); // window scroll
-        
-        
-        $('.nav a').on('click', function(e){
-            //console.log(3);
-            //makeScript();
-            //$self.css('top', dataTopShift);
-            //makeAnchor(e, $(this));
-            /*
-            if (makeAnchor(e, $(this)) == 1) {
-                console.log('ok');
-                makeScript();
-            }
-            */
-        });
-        
-        function makeScript() {
-            
             if ($window.scrollTop() <
                 $self.closest('[data-page-has-pin="true"]').prev('[data-type="page"]').outerHeight()) {
                 
@@ -315,7 +290,8 @@ $(document).ready(function(){
                 $self.css('top', dataTopShift);
             }
             
-        }
+        }); // window scroll
+        
     }
     
     function changeBgColor($self) {
@@ -427,37 +403,19 @@ $(document).ready(function(){
         });
         
     }
-
     
     function makeAnchor(e, $this) {
         
         e.preventDefault(); 
         e.stopPropagation();
         
-        var one = $window.scrollTop(),
-            two = $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top;
-            
-        /*
-        if (one <= two) {
-            if ($window.scrollTop() < two) {
-                $window.scrollTop(
-            }
-            
-        if (one <= two) {
-            
-            for (one <= two) {
-                one = one + 50;
-            }
-            
-        }
-        }
-        */
-        //.scroll();
-        $('html, body').animate({scrollTop: $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top}, 500);
+        $('.nav li').removeClass('active');
+        $this.closest('li').addClass('active');
         
-        
+        $('html, body').stop().animate({scrollTop: $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top}, 1500);
         
     }
+    
 }); // document ready
 
 
