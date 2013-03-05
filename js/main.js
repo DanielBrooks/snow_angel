@@ -76,6 +76,49 @@ $(document).ready(function(){
     });
     
     
+    $('[data-bg-color-change="false"]').each(function() {
+        
+        $(this).data('color-start', $(this).attr('data-color-start').toUpperCase());
+        
+        staticBgColor($(this));
+    });
+    
+    
+    $('.nav a').click(function() {
+        
+        //$window.scroll();
+        //console.log(2);
+        makeAnchor(e, $(this));
+        
+        /*
+        $('.rain').each(function(){
+            //var dataTopShift = parseInt($(this).attr('data-top-shift'));
+            //alert(1);
+            $(this).css('top', parseInt($(this).attr('data-top-shift')));
+            //alert(2);
+            if ($(this).hasClass('rain')) {
+                //console.log(1);
+            }
+            //console.log(1);
+        });
+        */
+    });
+    
+    
+    $('[data-circle-bg="to-left"]').each(function() {
+        
+        circleToLeft($(this));
+        
+    });
+    
+    
+    $('[data-circle-bg="to-right"]').each(function() {
+        
+        circleToRight($(this));
+        
+    });
+    
+    
     // For each element that has a data-type attribute
     $('section[data-type="background"]').each(function() {
     
@@ -140,6 +183,13 @@ $(document).ready(function(){
             } // in view
             
         }); // window scroll
+        
+        $('.nav a').on('click', function(e){
+            
+            makeAnchor(e, $(this));
+            //makeScript();
+            
+        });
         
     }
     
@@ -235,6 +285,26 @@ $(document).ready(function(){
             
         $(window).on('scroll', function(){
             
+            makeScript();
+            
+        }); // window scroll
+        
+        
+        $('.nav a').on('click', function(e){
+            //console.log(3);
+            //makeScript();
+            //$self.css('top', dataTopShift);
+            //makeAnchor(e, $(this));
+            /*
+            if (makeAnchor(e, $(this)) == 1) {
+                console.log('ok');
+                makeScript();
+            }
+            */
+        });
+        
+        function makeScript() {
+            
             if ($window.scrollTop() <
                 $self.closest('[data-page-has-pin="true"]').prev('[data-type="page"]').outerHeight()) {
                 
@@ -245,7 +315,7 @@ $(document).ready(function(){
                 $self.css('top', dataTopShift);
             }
             
-        }); // window scroll
+        }
     }
     
     function changeBgColor($self) {
@@ -257,25 +327,52 @@ $(document).ready(function(){
             patt = /([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})$/,
             
             matchesStart = patt.exec(start),
-            matchesStop = patt.exec(stop);
+            matchesStop = patt.exec(stop),
             
-            rStep = (parseInt(matchesStart[1], 16) - parseInt(matchesStop[1], 16)) / 100;
-            gStep = (parseInt(matchesStart[2], 16) - parseInt(matchesStop[2], 16)) / 100;
+            rStep = (parseInt(matchesStart[1], 16) - parseInt(matchesStop[1], 16)) / 100,
+            gStep = (parseInt(matchesStart[2], 16) - parseInt(matchesStop[2], 16)) / 100,
             bStep = (parseInt(matchesStart[3], 16) - parseInt(matchesStop[3], 16)) / 100;
         
-        
+
         $(window).on('scroll', function(){
             
             
-            if ( ($window.scrollTop() - dataTopOffset) <= $self.height() ) {
+            if ( (($window.scrollTop() - dataTopOffset) < $self.height()) &&
+                (($window.scrollTop() - dataTopOffset) > 0) ) {
                 
-                var percent = Math.round((($window.scrollTop() - dataTopOffset) / $self.height()) * 100);
+                var percent = Math.round((($window.scrollTop() - dataTopOffset) / $self.outerHeight()) * 100);
                 
                 var rgb = 'rgb(' + (parseInt(matchesStart[1], 16) - Math.round(rStep * percent)) + ','
                 + (parseInt(matchesStart[2], 16) - Math.round(gStep * percent)) + ','
                 + (parseInt(matchesStart[3], 16) - Math.round(bStep  * percent)) + ')';
                 
-                $self.closest('.section').attr('style', 'background:' + rgb);
+                $self.closest('.section').attr('style', 'background-color:' + rgb);
+            }
+            
+        }); // window scroll
+        
+    }
+    
+    function staticBgColor($self) {
+        var start = $self.data('color-start'),
+            
+            dataTopOffset = parseInt($self.attr('data-top-offset')),
+            
+            patt = /([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})$/,
+            
+            matchesStart = patt.exec(start);
+            
+        
+        $(window).on('scroll', function(){
+            
+            if ( $window.scrollTop() > (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) < ($window.scrollTop() + $window.height()) ) ) {
+                
+                var rgb = 'rgb(' + parseInt(matchesStart[1], 16) + ','
+                + parseInt(matchesStart[2], 16) + ','
+                + parseInt(matchesStart[3], 16) + ')';
+                
+                $self.closest('.section').attr('style', 'background-color:' + rgb);
             }
             
         }); // window scroll
@@ -293,6 +390,74 @@ $(document).ready(function(){
         }
     }
     
+    function circleToLeft($self) {
+        
+        // Store some variables based on where we are
+        var dataTopShift = parseInt($self.attr('data-top-shift')),
+            dataTopOffset = parseInt($self.attr('data-top-offset')),
+            dataSpeed = $self.attr('data-speed');
+        
+        $(window).on('scroll', function(){
+            
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
+                
+                $self.css('background-position', - (($window.scrollTop() - dataTopOffset) * dataSpeed) + 'px 0');
+            }
+            
+        });
+        
+    }
+    
+    function circleToRight($self) {
+        
+        // Store some variables based on where we are
+        var dataTopShift = parseInt($self.attr('data-top-shift')),
+            dataTopOffset = parseInt($self.attr('data-top-offset')),
+            dataSpeed = $self.attr('data-speed');
+        
+        $(window).on('scroll', function(){
+            
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
+                
+                $self.css('background-position', (($window.scrollTop() - dataTopOffset) * dataSpeed) + 'px 0');
+            }
+            
+        });
+        
+    }
+
+    
+    function makeAnchor(e, $this) {
+        
+        e.preventDefault(); 
+        e.stopPropagation();
+        
+        var one = $window.scrollTop(),
+            two = $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top;
+            
+        /*
+        if (one <= two) {
+            if ($window.scrollTop() < two) {
+                $window.scrollTop(
+            }
+            
+        if (one <= two) {
+            
+            for (one <= two) {
+                one = one + 50;
+            }
+            
+        }
+        }
+        */
+        //.scroll();
+        $('html, body').animate({scrollTop: $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top}, 500);
+        
+        
+        
+    }
 }); // document ready
 
 
