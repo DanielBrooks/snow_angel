@@ -1,6 +1,5 @@
 /*
- * TO DO:
- * - to cache data-top-offset, data-top-shift
+ * 
  *
  *
  */
@@ -31,6 +30,21 @@ $(document).ready(function(){
         setPositionData($(this));
         
     }); // each data-type
+    
+    
+    $('[data-require-position="true"]').each(function() {
+        
+        $(this).data('top-shift', parseInt($(this).attr('data-top-shift')));
+        $(this).data('top-offset', parseInt($(this).attr('data-top-offset')));
+        
+    });
+    
+    
+    $('[data-circle-bg]').each(function() {
+        
+        $(this).data('speed', $(this).attr('data-speed'));
+        
+    });
     
     
     $('[data-fade="true"]').each(function() {
@@ -182,8 +196,7 @@ $(document).ready(function(){
     function decorationFade($self) {
         
         // Store some variables based on where we are
-        var dataTopShift = parseInt($self.attr('data-top-shift')),
-            dataTopOffset = parseInt($self.attr('data-top-offset'));
+        var dataTopOffset = $self.data('top-offset');
         
         $(window).scroll(function(){
             
@@ -202,8 +215,8 @@ $(document).ready(function(){
     function slideToLeft($self) {
         
         // Store some variables based on where we are
-        var dataTopShift = parseInt($self.attr('data-top-shift')),
-            dataTopOffset = parseInt($self.attr('data-top-offset')) - dataTopShift;
+        var dataTopShift = $self.data('top-shift'),
+            dataTopOffset = $self.data('top-offset') - dataTopShift;
         
         $(window).on('scroll resize', function(){
             
@@ -234,8 +247,8 @@ $(document).ready(function(){
     function slideToRight($self) {
         
         // Store some variables based on where we are
-        var dataTopShift = parseInt($self.attr('data-top-shift')),
-            dataTopOffset = parseInt($self.attr('data-top-offset')) - dataTopShift;
+        var dataTopShift = $self.data('top-shift'),
+            dataTopOffset = $self.data('top-offset') - dataTopShift;
         
         $(window).on('scroll resize', function(){
             
@@ -265,18 +278,17 @@ $(document).ready(function(){
     
     function pinDecoration($self) {
         
-        if ($self.attr('data-top-shift') == undefined) {
-            $self.attr('data-top-shift', parseInt($self.css('top')));
-        }
-        
         // Store some variables based on where we are
-        var dataTopShift = parseInt($self.attr('data-top-shift'));
+        var dataTopShift = $self.data('top-shift'),
+            closestPageOffset = $self.closest('[data-type="page"]').offset().top;
         
-        $(window).on('scroll', function(){
+        $(window).on('scroll', function() {
             
-            if (dataTopShift + $window.scrollTop() < dataTopShift + $self.closest('[data-type="page"]').outerHeight()) {
+            if ( ( closestPageOffset <= $window.scrollTop()) &&
+                ($window.scrollTop() <= closestPageOffset + $self.closest('[data-type="page"]').outerHeight()) ) {
                 
-                $self.css('top', dataTopShift + $window.scrollTop() + 'px');
+                $self.css('top', dataTopShift + $window.scrollTop() - closestPageOffset + 'px');
+                
             }
             
         }); // window scroll
@@ -285,8 +297,8 @@ $(document).ready(function(){
     function pinOnTop($self) {
         
         // Store some variables based on where we are
-        var dataTopShift = parseInt($self.attr('data-top-shift')),
-            dataTopOffset = parseInt($self.attr('data-top-offset'));
+        var dataTopShift = $self.data('top-shift'),
+            dataTopOffset = $self.data('top-offset');
             
         $(window).on('scroll', function(){
             
@@ -308,7 +320,7 @@ $(document).ready(function(){
         var start = $self.data('color-start'),
             stop = $self.data('color-stop'),
             
-            dataTopOffset = parseInt($self.attr('data-top-offset')),
+            dataTopOffset = $self.data('top-offset'),
             
             patt = /([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})$/,
             
@@ -319,12 +331,12 @@ $(document).ready(function(){
             gStep = (parseInt(matchesStart[2], 16) - parseInt(matchesStop[2], 16)) / 100,
             bStep = (parseInt(matchesStart[3], 16) - parseInt(matchesStop[3], 16)) / 100;
         
-
+        
         $(window).on('scroll', function(){
             
             
-            if ( (($window.scrollTop() - dataTopOffset) < $self.height()) &&
-                (($window.scrollTop() - dataTopOffset) > 0) ) {
+            if ( (($window.scrollTop() - dataTopOffset) <= $self.outerHeight()) &&
+                (($window.scrollTop() - dataTopOffset) >= 0) ) {
                 
                 var percent = Math.round((($window.scrollTop() - dataTopOffset) / $self.outerHeight()) * 100);
                 
@@ -340,9 +352,10 @@ $(document).ready(function(){
     }
     
     function staticBgColor($self) {
+        
         var start = $self.data('color-start'),
             
-            dataTopOffset = parseInt($self.attr('data-top-offset')),
+            dataTopOffset = $self.data('top-offset'),
             
             patt = /([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})$/,
             
@@ -379,9 +392,8 @@ $(document).ready(function(){
     function circleToLeft($self) {
         
         // Store some variables based on where we are
-        var dataTopShift = parseInt($self.attr('data-top-shift')),
-            dataTopOffset = parseInt($self.attr('data-top-offset')),
-            dataSpeed = $self.attr('data-speed');
+        var dataTopOffset = $self.data('top-offset'),
+            dataSpeed = $self.data('speed');
         
         $(window).on('scroll', function(){
             
@@ -399,9 +411,8 @@ $(document).ready(function(){
     function circleToRight($self) {
         
         // Store some variables based on where we are
-        var dataTopShift = parseInt($self.attr('data-top-shift')),
-            dataTopOffset = parseInt($self.attr('data-top-offset')),
-            dataSpeed = $self.attr('data-speed');
+        var dataTopOffset = $self.data('top-offset'),
+            dataSpeed = $self.data('speed');
         
         $(window).on('scroll', function(){
             
@@ -417,7 +428,7 @@ $(document).ready(function(){
     
     function jumpingDecoration($self) {
         
-        var dataTopOffset = parseInt($self.attr('data-top-offset')),
+        var dataTopOffset = $self.data('top-offset'),
             
             dataSpeed = $self.data('speed'),
             dataDistance = $self.data('distance');
@@ -435,9 +446,9 @@ $(document).ready(function(){
                 var margin = sinus * dataDistance / 2;
                 */
                 
-                var sinus = Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 );
+                //var sinus = Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 );
                 
-                $self.css('margin-top', sinus * dataDistance / 2);
+                $self.css('margin-top', Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 ) * dataDistance / 2);
                 
             }
             
@@ -450,9 +461,6 @@ $(document).ready(function(){
         
         e.preventDefault(); 
         e.stopPropagation();
-        
-        $('.nav li').removeClass('active');
-        $this.closest('li').addClass('active');
         
         $('html, body').stop().animate({scrollTop: $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top}, 1500);
         
