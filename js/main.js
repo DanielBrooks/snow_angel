@@ -125,6 +125,16 @@ $(document).ready(function(){
     });
     
     
+    $('[data-jumping="true"]').each(function() {
+        
+        $(this).data('speed', $(this).attr('data-speed'));
+        $(this).data('distance', $(this).attr('data-distance'));
+        
+        jumpingDecoration($(this));
+        
+    });
+    
+    
     // For each element that has a data-type attribute
     $('section[data-type="background"]').each(function() {
     
@@ -379,6 +389,7 @@ $(document).ready(function(){
             ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
                 
                 $self.css('background-position', - (($window.scrollTop() - dataTopOffset) * dataSpeed) + 'px 0');
+                
             }
             
         });
@@ -401,6 +412,37 @@ $(document).ready(function(){
             }
             
         });
+        
+    }
+    
+    function jumpingDecoration($self) {
+        
+        var dataTopOffset = parseInt($self.attr('data-top-offset')),
+            
+            dataSpeed = $self.data('speed'),
+            dataDistance = $self.data('distance');
+        
+        $(window).on('scroll', function(){
+            
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
+                
+                /*
+                var degrees = Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360));
+                var rad = degrees * dataSpeed * Math.PI/180;
+                var sinus = Math.sin(rad);
+                
+                var margin = sinus * dataDistance / 2;
+                */
+                
+                var sinus = Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 );
+                
+                $self.css('margin-top', sinus * dataDistance / 2);
+                
+            }
+            
+        });
+        
         
     }
     
