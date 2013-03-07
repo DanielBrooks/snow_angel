@@ -47,9 +47,16 @@ $(document).ready(function(){
     });
     
     
-    $('[data-fade="true"]').each(function() {
+    $('[data-fade="in"]').each(function() {
         
-        decorationFade($(this));
+        decorationFadeIn($(this));
+        
+    }); // each data-type
+    
+    
+    $('[data-fade="out"]').each(function() {
+        
+        decorationFadeOut($(this));
         
     }); // each data-type
     
@@ -149,6 +156,16 @@ $(document).ready(function(){
     });
     
     
+    $('[data-sparkling="true"]').each(function() {
+        
+        $(this).data('speed', $(this).attr('data-speed'));
+        $(this).data('depth', $(this).attr('data-depth'));
+        
+        sparklingDecoration($(this));
+        
+    });
+    
+    
     // For each element that has a data-type attribute
     $('section[data-type="background"]').each(function() {
     
@@ -189,11 +206,15 @@ $(document).ready(function(){
         
         var windowHeight = $(window).height();
         
-        $('[data-full-height="true"]').css('min-height', windowHeight);
+        $('[data-full-height="true"]').each(function() {
+            
+            $(this).css('min-height', windowHeight - parseInt($(this).css('padding-top')) - parseInt($(this).css('padding-bottom')));
+            
+        });
         
     }
     
-    function decorationFade($self) {
+    function decorationFadeIn($self) {
         
         // Store some variables based on where we are
         var dataTopOffset = $self.data('top-offset');
@@ -212,28 +233,54 @@ $(document).ready(function(){
         
     }
     
+    function decorationFadeOut($self) {
+        
+        // Store some variables based on where we are
+        var dataTopOffset = $self.data('top-offset');
+        
+        $(window).scroll(function(){
+            
+            // If this section is in view
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
+                
+                $self.css('opacity', ((dataTopOffset - $window.scrollTop()) / ($window.height() / 100)) / 100);
+                
+            } // in view
+            
+        }); // window scroll
+        
+    }
+    
     function slideToLeft($self) {
         
         // Store some variables based on where we are
         var dataTopShift = $self.data('top-shift'),
-            dataTopOffset = $self.data('top-offset') - dataTopShift;
+            dataTopOffset = $self.data('top-offset') - dataTopShift,
+            percent = 0;
         
         $(window).on('scroll resize', function(){
             
-            var percent = 0;
+            if ( $window.scrollTop() < dataTopOffset ) {
+                
+                percent = 1;
+            }
             
             // If this section is in view
-            if ( ($window.scrollTop() + $window.height()) >= (dataTopOffset) &&
-            ( (dataTopOffset + $self.height()) >= $window.scrollTop() ) ) {
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
                 
                 if ((dataTopOffset - $window.scrollTop()) >= 0) {
                     
                     percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
                 }
-            } else {
                 
-                percent = 1;
             } // in view
+            
+            if ( $window.scrollTop() > dataTopOffset ) {
+                
+                percent = 0;
+            } 
             
             //var percentWidth = (($(window).width() / 2) + (($self.width()) / 2)) * percent;
             var selfLeftPosition = ($(window).width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent;
@@ -248,24 +295,31 @@ $(document).ready(function(){
         
         // Store some variables based on where we are
         var dataTopShift = $self.data('top-shift'),
-            dataTopOffset = $self.data('top-offset') - dataTopShift;
+            dataTopOffset = $self.data('top-offset') - dataTopShift,
+            percent = 0;
         
         $(window).on('scroll resize', function(){
             
-            var percent = 0;
+            if ( $window.scrollTop() < dataTopOffset ) {
+                
+                percent = 1;
+            }
             
             // If this section is in view
-            if ( ($window.scrollTop() + $window.height()) >= (dataTopOffset) &&
-            ( (dataTopOffset + $self.height()) >= $window.scrollTop() ) ) {
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
                 
                 if ((dataTopOffset - $window.scrollTop()) >= 0) {
                     
                     percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
                 }
-            } else {
                 
-                percent = 1;
             } // in view
+            
+            if ( $window.scrollTop() > dataTopOffset ) {
+                
+                percent = 0;
+            } 
             
             //var percentWidth = (($(window).width() / 2) + (($self.width()) / 2)) * percent;
             var selfLeftPosition = - ($(window).width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent;
@@ -307,9 +361,6 @@ $(document).ready(function(){
                 
                 $self.css('top', $window.scrollTop() - dataTopOffset + (dataTopShift * 2));
                 
-            }
-            else {
-                $self.css('top', dataTopShift);
             }
             
         }); // window scroll
@@ -454,6 +505,34 @@ $(document).ready(function(){
             
         });
         
+    }
+    
+    function sparklingDecoration($self) {
+        
+        var dataTopOffset = $self.data('top-offset'),
+            
+            dataSpeed = $self.data('speed'),
+            dataDepth = $self.data('depth') / 100;
+        
+        $(window).on('scroll', function(){
+            
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            ( ($self.offset().top + $self.height()) > $window.scrollTop() ) ) {
+                
+                var degrees = Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360));
+                var rad = degrees * dataSpeed * Math.PI/180;
+                var sinus = Math.sin(rad);
+                
+                var margin = sinus * dataDepth / 2;
+                
+                $self.css('opacity', (1 - dataDepth / 2) + margin );
+                //var sinus = Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 );
+                
+                //$self.css('margin-top', Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 ) * dataDistance / 2);
+                
+            }
+            
+        });
         
     }
     
