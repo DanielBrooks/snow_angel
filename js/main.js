@@ -9,6 +9,7 @@ $(document).ready(function(){
     
     // Cache the Window object
     $window = $(window);
+    var pageOrder = 0;
     
     // Set the min-height of each section to the window's height
     setSectionMinHeight();
@@ -22,6 +23,19 @@ $(document).ready(function(){
     $('[data-type]').each(function() {
         $(this).data('offsetY', parseInt($(this).attr('data-offsetY')));
         $(this).data('speed', $(this).attr('data-speed'));
+    });
+    
+    
+    $('[data-type="page"]').each(function() {
+        
+        $(this).attr('data-page-order', ++pageOrder);
+        
+    });
+    
+    $('[data-type="page"]').each(function() {
+        
+        $(this).data('page-order', parseInt($(this).attr('data-page-order')));
+        
     });
     
     
@@ -83,6 +97,8 @@ $(document).ready(function(){
     
     
     $('[data-pin-on-top="true"]').each(function() {
+        
+        $(this).data('pin-distance', parseInt($(this).attr('data-pin-distance')));
         
         pinOnTop($(this));
         
@@ -352,12 +368,44 @@ $(document).ready(function(){
         
         // Store some variables based on where we are
         var dataTopShift = $self.data('top-shift'),
-            dataTopOffset = $self.data('top-offset');
+            dataTopOffset = $self.data('top-offset'),
             
+            dataPinDistance = $self.data('pin-distance') - 1,
+            distance = 0,
+            
+            startPage = $self.closest('[data-type="page"]').data('page-order') - 1,
+            stopPage = startPage + dataPinDistance,
+            
+            startPageOffset = $('[data-page-order="' + startPage + '"]').offset().top;
+        
+        
+        //console.log(dataPinDistance == NaN);
+        if ( dataPinDistance == 1 ) {
+            
+            //distance = $self.closest('[data-page-has-pin="true"]').prev('[data-type="page"]').outerHeight();
+            
+        }
+        
+            
+            for ( var i = startPage; i <= stopPage; i++) {
+                
+                distance = distance + $('[data-page-order="' + i + '"]').outerHeight();
+                //console.log(distance);
+            }
+            
+        
+        //console.log(distance);
+        
         $(window).on('scroll', function(){
             
-            if ($window.scrollTop() <
-                $self.closest('[data-page-has-pin="true"]').prev('[data-type="page"]').outerHeight()) {
+            if ( $window.scrollTop() < distance ) {
+                
+                //$self.css('top', $window.scrollTop() - dataTopOffset + (dataTopShift * 2));
+                
+            }
+            
+            if ( ($window.scrollTop() > startPageOffset) &&
+                ($window.scrollTop() <  startPageOffset + distance) ) {
                 
                 $self.css('top', $window.scrollTop() - dataTopOffset + (dataTopShift * 2));
                 
@@ -516,7 +564,7 @@ $(document).ready(function(){
         
         $(window).on('scroll', function(){
             
-            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+            if ( $window.scrollTop()  > (dataTopOffset) &&
             ( ($self.offset().top + $self.height()) > $window.scrollTop() ) ) {
                 
                 var degrees = Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360));
@@ -530,6 +578,9 @@ $(document).ready(function(){
                 
                 //$self.css('margin-top', Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 ) * dataDistance / 2);
                 
+            }
+            else {
+                //$self.css('opacity', 0);
             }
             
         });

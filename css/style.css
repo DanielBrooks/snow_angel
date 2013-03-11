@@ -489,6 +489,7 @@ select, input, textarea, input[type="password"], button {
     height: 104px;
     margin: 0 0 0 -708px;
     background: url(../images/night_clouds.png) no-repeat;
+    opacity: 0;
 }
 .page-portfolio .stars {
     top: 0;
@@ -496,6 +497,7 @@ select, input, textarea, input[type="password"], button {
     height: 172px;
     margin: 0 0 0 -600px;
     background: url(../images/stars.png) no-repeat;
+    opacity: 0;
 }
 .page-portfolio .moon {
     top: -14px;
@@ -503,6 +505,7 @@ select, input, textarea, input[type="password"], button {
     height: 178px;
     margin: 0 0 0 -50%;
     background: url(../images/moon.png) no-repeat;
+    opacity: 0;
 }
 
 /*----------------------------------------------------------------------------------*/
