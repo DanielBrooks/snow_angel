@@ -273,35 +273,92 @@ $(document).ready(function(){
         // Store some variables based on where we are
         var dataTopShift = $self.data('top-shift'),
             dataTopOffset = $self.data('top-offset') - dataTopShift,
+            pageHeight = $self.closest('[data-type="page"]').outerHeight(),
+            slideMark = 0,
             percent = 0;
+        
+        
+        if( $self.attr('data-slide-double') == 'true' ) {
+            
+            var pageHeightPrev = $self.closest('[data-type="page"]').prev('[data-type="page"]').outerHeight(),
+                pagePrevTopOffset = $self.closest('[data-type="page"]').prev('[data-type="page"]').offset().top;
+                
+            slideMark = 1;
+        }
         
         $(window).on('scroll resize', function(){
             
-            if ( $window.scrollTop() < dataTopOffset ) {
+            if ( slideMark == 1 ) {
                 
-                percent = 1;
-            }
-            
-            // If this section is in view
-            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
-            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
+
                 
-                if ((dataTopOffset - $window.scrollTop()) >= 0) {
+                if ( ($window.scrollTop() + $window.height()) > (dataTopOffset - pageHeightPrev) &&
+                ( (dataTopOffset - pageHeightPrev + $self.height()) > $window.scrollTop() ) ) {
                     
-                    percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
+                    if ((dataTopOffset - pageHeightPrev - $window.scrollTop()) >= 0) {
+                        
+                        percent = ((dataTopOffset - pageHeightPrev - $window.scrollTop()) / pageHeightPrev);
+                    }
+                    
                 }
                 
-            } // in view
-            
-            if ( $window.scrollTop() > dataTopOffset ) {
                 
-                percent = 0;
-            } 
-            
-            //var percentWidth = (($(window).width() / 2) + (($self.width()) / 2)) * percent;
-            var selfLeftPosition = ($(window).width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent;
-            
-            $self.css('left', selfLeftPosition + 'px');
+
+                
+                
+                // If this section is in view
+                if ( ( (dataTopOffset - pageHeightPrev + $self.height()) < $window.scrollTop() ) &&
+                ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+                ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
+                    
+                    if ((dataTopOffset - $window.scrollTop()) >= 0) {
+                        
+                        percent = ((dataTopOffset - $window.scrollTop()) / pageHeight);
+                    }
+                    
+                } // in view
+                
+                
+                if ( $window.scrollTop() > dataTopOffset ) {
+                    
+                    percent = 0;
+                } 
+                
+                console.log(percent);
+                //var percentWidth = (($(window).width() / 2) + (($self.width()) / 2)) * percent;
+                var selfLeftPosition = ($(window).width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent;
+                
+                $self.css('left', selfLeftPosition + 'px');
+                
+            }
+            //--------------------------------------------------------------
+            else {
+                if ( $window.scrollTop() < dataTopOffset ) {
+                    
+                    percent = 1;
+                }
+                
+                // If this section is in view
+                if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
+                ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
+                    
+                    if ((dataTopOffset - $window.scrollTop()) >= 0) {
+                        
+                        percent = ((dataTopOffset - $window.scrollTop()) / pageHeight);
+                    }
+                    
+                } // in view
+                
+                if ( $window.scrollTop() > dataTopOffset ) {
+                    
+                    percent = 0;
+                } 
+                
+                //var percentWidth = (($(window).width() / 2) + (($self.width()) / 2)) * percent;
+                var selfLeftPosition = ($(window).width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent;
+                
+                $self.css('left', selfLeftPosition + 'px');
+            }
             
         }); // window scroll
         
