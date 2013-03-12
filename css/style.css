@@ -721,6 +721,7 @@ select, input, textarea, input[type="password"], button {
 .page-contacts .trees {
     width: 1274px;
     height: 226px;
+    bottom: 0;
     margin: 0 0 0 -637px;
     background: url(../images/trees.png) no-repeat;
 }
@@ -731,6 +732,14 @@ select, input, textarea, input[type="password"], button {
 /*----------------------------------------------------------------------------------*/
 .page-make {
     position: relative;
+}
+.page-make .square {
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    background: #000;
 }
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------*/
