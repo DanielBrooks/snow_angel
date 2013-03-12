@@ -415,9 +415,16 @@ $(document).ready(function(){
             if ( ( closestPageOffset <= $window.scrollTop()) &&
                 ($window.scrollTop() <= closestPageOffset + $self.closest('[data-type="page"]').outerHeight()) ) {
                 
-                $self.css('top', dataTopShift + $window.scrollTop() - closestPageOffset + 'px');
+                $self.css('top', dataTopShift + $window.scrollTop() - closestPageOffset);
                 
             }
+            
+            /*
+            if ( $window.scrollTop() > closestPageOffset + $self.closest('[data-type="page"]').outerHeight() ) {
+                
+                $self.css('top', dataTopShift + $self.closest('[data-type="page"]').outerHeight());
+            }
+            */
             
         }); // window scroll
     }
