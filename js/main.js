@@ -39,6 +39,15 @@ $(document).ready(function(){
     });
     
     
+    $('[data-position-bottom]').each(function() {
+        
+        $(this).data('bottom-shift', parseInt($(this).attr('data-position-bottom')));
+        
+        setPositionBottom($(this));
+        
+    });
+    
+    
     $('[data-require-position="true"]').each(function() {
         
         setPositionData($(this));
@@ -346,7 +355,6 @@ $(document).ready(function(){
                 percent = 0;
             } 
             
-            console.log(percent);
             
             //var percentWidth = (($(window).width() / 2) + (($self.width()) / 2)) * percent;
             var selfLeftPosition = ($window.width() / 2) + (($(window).width() / 2) + (($self.width()) / 2)) * percent + ($window.width() * percent);
@@ -524,6 +532,14 @@ $(document).ready(function(){
             }
             
         }); // window scroll
+        
+    }
+    
+    function setPositionBottom($self) {
+        
+        var bottomShift = $self.data('bottom-shift');
+        
+        $self.css('top', $self.closest('[data-type="page"]').outerHeight() - $self.height() - bottomShift);
         
     }
     
