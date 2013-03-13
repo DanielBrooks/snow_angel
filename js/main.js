@@ -110,6 +110,35 @@ $(document).ready(function(){
         
     }); // each data-type
     
+    $('[data-fade-after-pin="true"]').each(function() {
+        
+        var dataPinDistance = $(this).data('pin-distance') - 1 - 2,
+            distance = 0,
+            
+            startPage = $(this).closest('[data-type="page"]').data('page-order') - 1,
+            stopPage = startPage + dataPinDistance,
+            stopFadePage = $('[data-page-order="' + (stopPage + 1) + '"]').outerHeight();
+        
+        for ( var i = startPage; i <= stopPage; i++) {
+            
+            distance = distance + $('[data-page-order="' + i + '"]').outerHeight();
+            
+        }
+        
+        $(this).attr('data-action-distance', distance);
+        $(this).attr('data-fade-distance', stopFadePage);
+        
+    });
+    
+    $('[data-fade-after-pin="true"]').each(function() {
+        
+        $(this).data('action-distance', parseInt($(this).attr('data-action-distance')));
+        $(this).data('fade-distance', parseInt($(this).attr('data-fade-distance')));
+        
+        fadeAfterPin($(this));
+        
+    });
+    
     
     $('[data-bg-color-change="true"]').each(function() {
         
@@ -445,7 +474,7 @@ $(document).ready(function(){
             for ( var i = startPage; i <= stopPage; i++) {
                 
                 distance = distance + $('[data-page-order="' + i + '"]').outerHeight();
-                //console.log(distance);
+                //console.log(i);
             }
             
         
@@ -615,27 +644,76 @@ $(document).ready(function(){
         var dataTopOffset = $self.data('top-offset'),
             
             dataSpeed = $self.data('speed'),
-            dataDepth = $self.data('depth') / 100;
+            dataDepth = $self.data('depth') / 100,
+            
+            dataDistance = $self.data('action-distance'),
+            dataFadeDistance = $self.data('fade-distance');
+        
+        
+        if ( $self.attr('data-fade-after-pin') == 'true' ) {
+            
+            $(window).on('scroll', function(){
+                
+                if ( $window.scrollTop()  > (dataTopOffset) &&
+                ( (dataTopOffset + dataDistance) > $window.scrollTop() ) ) {
+                    
+                    var degrees = Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360));
+                    var rad = degrees * dataSpeed * Math.PI/180;
+                    var sinus = Math.sin(rad);
+                    
+                    var margin = sinus * dataDepth / 2;
+                    
+                    $self.css('opacity', (1 - dataDepth / 2) + margin );
+                    
+                }
+                
+            });
+            
+        }
+        else {
+            
+            $(window).on('scroll', function(){
+                
+                if ( $window.scrollTop()  > (dataTopOffset) &&
+                ( ($self.offset().top + $self.height()) > $window.scrollTop() ) ) {
+                    
+                    var degrees = Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360));
+                    var rad = degrees * dataSpeed * Math.PI/180;
+                    var sinus = Math.sin(rad);
+                    
+                    var margin = sinus * dataDepth / 2;
+                    
+                    $self.css('opacity', (1 - dataDepth / 2) + margin );
+                    //var sinus = Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 );
+                    
+                    //$self.css('margin-top', Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 ) * dataDistance / 2);
+                    
+                }
+                else {
+                    //$self.css('opacity', 0);
+                }
+                
+            });
+            
+        }
+        
+    }
+    
+    function fadeAfterPin($self) {
+        
+        var dataTopOffset = $self.data('top-offset'),
+            
+            dataDistance = $self.data('action-distance'),
+            dataFadeDistance = $self.data('fade-distance');
+        
         
         $(window).on('scroll', function(){
             
-            if ( $window.scrollTop()  > (dataTopOffset) &&
-            ( ($self.offset().top + $self.height()) > $window.scrollTop() ) ) {
+            if ( $window.scrollTop() > (dataTopOffset + dataDistance) &&
+                (dataTopOffset + dataDistance + dataFadeDistance) > $window.scrollTop() ) {
                 
-                var degrees = Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360));
-                var rad = degrees * dataSpeed * Math.PI/180;
-                var sinus = Math.sin(rad);
+                $self.css('opacity', ((dataTopOffset + dataDistance + dataFadeDistance - $window.scrollTop()) / (dataFadeDistance / 100)) / 100);
                 
-                var margin = sinus * dataDepth / 2;
-                
-                $self.css('opacity', (1 - dataDepth / 2) + margin );
-                //var sinus = Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 );
-                
-                //$self.css('margin-top', Math.sin( Math.round((dataTopOffset - $window.scrollTop()) / ($window.height() / 360)) * dataSpeed * Math.PI/180 ) * dataDistance / 2);
-                
-            }
-            else {
-                //$self.css('opacity', 0);
             }
             
         });
