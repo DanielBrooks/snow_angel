@@ -280,6 +280,11 @@ $(document).ready(function(){
                 
             } // in view
             
+            if ( ($window.scrollTop() + $window.height()) < (dataTopOffset) ) {
+                
+                $self.css('opacity', 0);
+                
+            }
         }); // window scroll
         
     }
