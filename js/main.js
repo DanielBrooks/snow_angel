@@ -517,9 +517,11 @@ $(document).ready(function(){
             
             rStep = (parseInt(matchesStart[1], 16) - parseInt(matchesStop[1], 16)) / 100,
             gStep = (parseInt(matchesStart[2], 16) - parseInt(matchesStop[2], 16)) / 100,
-            bStep = (parseInt(matchesStart[3], 16) - parseInt(matchesStop[3], 16)) / 100;
+            bStep = (parseInt(matchesStart[3], 16) - parseInt(matchesStop[3], 16)) / 100,
+            
+            firstInSection = $self.prev('[data-type="page"]').attr('data-color-start') == undefined;
         
-        
+        console.log(firstInSection == true);
         $(window).on('scroll', function(){
             
             
@@ -533,6 +535,17 @@ $(document).ready(function(){
                 + (parseInt(matchesStart[3], 16) - Math.round(bStep  * percent)) + ')';
                 
                 $self.closest('.section').attr('style', 'background-color:' + rgb);
+            }
+            
+            if ( (firstInSection == true) &&
+                (($window.scrollTop() - dataTopOffset) < 0) ) {
+                
+                var rgb = 'rgb(' + parseInt(matchesStart[1], 16) + ','
+                + parseInt(matchesStart[2], 16) + ','
+                + parseInt(matchesStart[3], 16) + ')';
+                
+                $self.closest('.section').attr('style', 'background-color:' + rgb);
+                
             }
             
         }); // window scroll
