@@ -44,6 +44,24 @@ select, input, textarea, input[type="password"], button {
     clear: both;
 }
 
+
+::-moz-placeholder {
+    color: #7E97CB;
+    font-style: italic;
+} 
+:-moz-placeholder {
+    color: #7E97CB;
+    font-style: italic;
+} 
+:-ms-input-placeholder {
+    color: #7E97CB;
+    font-style: italic;
+}
+::-webkit-input-placeholder {
+    color: #7E97CB;
+    font-style: italic;
+}
+
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------> Custom fonts <--------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -153,7 +171,7 @@ select, input, textarea, input[type="password"], button {
 }
 
 .textures {
-    display: none;
+    display: block;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -220,14 +238,14 @@ select, input, textarea, input[type="password"], button {
     left: auto;
     top: 47px;
     right: -286px;
-    background: url(../images/yes_video.png) no-repeat;
+    background: url(../images/sprite_decorations.png) -1700px -300px no-repeat;
 }
 .page-about .video-block .video-hint {
     width: 257px;
     height: 257px;
     left: -283px;
     top: 8px;
-    background: url(../images/yes_left.png) no-repeat;
+    background: url(../images/sprite_decorations.png) -1700px 0 no-repeat;
 }
 
 .page-home .media-block {
@@ -246,18 +264,27 @@ select, input, textarea, input[type="password"], button {
 }
 .page-home .media-block .vm {
     width: 23px;
-    background: url(../images/icon_vimeo.png) no-repeat;
+    background: url(../images/sprite_icons.png) -50px -100px no-repeat;
 }
 .page-home .media-block .tw {
     width: 24px;
-    background: url(../images/icon_twitter.png) no-repeat;
+    background: url(../images/sprite_icons.png) -50px -150px no-repeat;
 }
 .page-home .media-block .fb {
     width: 11px;
-    background: url(../images/icon_facebook.png) no-repeat;
+    background: url(../images/sprite_icons.png) -50px -200px no-repeat;
 }
 
 
+.page-home .sun-decoration {
+    width: 1332px;
+    height: 250px;
+    top: -25px;
+    margin: 0 0 0 -666px;
+    background: url(../images/sun_decoration_top.png) no-repeat;
+}
+
+/*
 .section .sun {
     width: 260px;
     height: 250px;
@@ -284,7 +311,7 @@ select, input, textarea, input[type="password"], button {
     margin: 0 0 0 460px;
     top: 10px;
 }
-
+*/
 
 
 /*----------------------------------------------------------------------------------*/
@@ -307,7 +334,7 @@ select, input, textarea, input[type="password"], button {
     height: 191px;
     top: 185px;
     margin: 0 0 0 -341px;
-    background: url(../images/umbrella.png) no-repeat;
+    background: url(../images/sprite_decorations.png) 0 -250px no-repeat;
 }
 
 .page-about .rain-clouds {
@@ -318,10 +345,10 @@ select, input, textarea, input[type="password"], button {
     top: -12px;
 }
 .page-about .rain-clouds.rain-clouds-right {
-    background: url(../images/rain_clouds_right.png) center 0 no-repeat;
+    background: url(../images/sprite_decorations.png) 0 -1100px no-repeat;
 }
 .page-about .rain-clouds.rain-clouds-left {
-    background: url(../images/rain_clouds_left.png) center 0 no-repeat;
+    background: url(../images/sprite_decorations.png) 0 -950px no-repeat;
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -350,21 +377,21 @@ select, input, textarea, input[type="password"], button {
     height: 146px;
     top: 0px;
     margin: -50px 0 0 -490px;
-    background: url(../images/submarine.png) no-repeat;
+    background: url(../images/sprite_decorations.png) 0 -100px no-repeat;
 }
 .page-clients .mine-left {
     bottom: 0;
     margin: 0 0 0 -588px;
     width: 83px;
     height: 478px;
-    background: url(../images/mine_left.png) no-repeat;
+    background: url(../images/sprite_decorations.png) -1500px -200px no-repeat;
 }
 .page-clients .mine-right {
     bottom: 0;
     margin: 0 0 0 513px;
     width: 40px;
     height: 497px;
-    background: url(../images/mine_right.png) no-repeat;
+    background: url(../images/sprite_decorations.png) -1600px -200px no-repeat;
 }
 
 
@@ -492,7 +519,7 @@ select, input, textarea, input[type="password"], button {
     width: 1416px;
     height: 104px;
     margin: 0 0 0 -708px;
-    background: url(../images/night_clouds.png) no-repeat;
+    background: url(../images/sprite_decorations.png) 0 -1250px no-repeat;
     opacity: 0;
 }
 .page-portfolio .stars {
@@ -517,7 +544,7 @@ select, input, textarea, input[type="password"], button {
     position: absolute;
     left: -146px;
     top: 0;
-    background: url(../images/moon.png) no-repeat;
+    background: url(../images/sprite_decorations.png) -1500px 0 no-repeat;
 }
 
 
@@ -723,9 +750,16 @@ select, input, textarea, input[type="password"], button {
     height: 226px;
     bottom: 0;
     margin: 0 0 0 -637px;
-    background: url(../images/trees.png) no-repeat;
+    background: url(../images/sprite_decorations.png) 0 -450px no-repeat;
 }
 
+.page-contacts .snowflakes {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url(../images/snowflakes.png) center 90px;
+}
 
 /*----------------------------------------------------------------------------------*/
 /*----------------------------> Make me a video page <------------------------------*/
@@ -733,7 +767,226 @@ select, input, textarea, input[type="password"], button {
 .page-make {
     position: relative;
 }
+.page-make .standing-board {
+    position: absolute;
+    left: 50%;
+    bottom: 190px;
+    width: 540px;
+    margin: 0 0 0 -270px;
+    background: #F9F9F9;
+    border: 8px solid #FFF;
+    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    
+    -webkit-box-shadow: 0px 0px 30px 0 rgba(0,0,0, 0.15);
+    -moz-box-shadow: 0px 0px 30px 0 rgba(0,0,0, 0.15);
+    box-shadow: 0px 0px 30px 0 rgba(0,0,0, 0.15);
+}
 
+
+.page-make .board-textures {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url(../images/bigboard_textures.png) no-repeat;
+}
+.page-make .snow-hat {
+    display: block;
+    position: absolute;
+    width: 570px;
+    height: 40px;
+    left: -15px;
+    top: -24px;
+    background: url(../images/sprite_decorations.png) 0 -50px no-repeat;
+}
+
+.page-make .board-holder {
+    display: block;
+    width: 88px;
+    height: 185px;
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    margin: 0 0 0 -44px;
+    background: url(../images/sprite_decorations.png) -1500px -750px no-repeat;
+}
+.page-make .snowman {
+    display: block;
+    width: 91px;
+    height: 159px;
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    margin: 0 0 0 20px;
+    background: url(../images/sprite_decorations.png) -1600px -750px no-repeat;
+}
+
+
+
+.page-make h2 {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    font-style: italic;
+    color: #FFF;
+    text-shadow: 2px 2px 0 #A3C8EB;
+}
+.page-make .caption {
+    position: relative;
+}
+.page-make .caption .icon {
+    display: block;
+    position: absolute;
+    top: 16px;
+    width: 14px;
+    height: 14px;
+    background: url(../images/sprite_icons.png) -100px 0 no-repeat;
+}
+.page-make .caption .icon-left {
+    left: -26px;
+}
+.page-make .caption .icon-right {
+    right: -22px;
+}
+
+.page-make .form-list {
+    padding: 41px 34px 38px;
+}
+.page-make .form-list .text-block {
+    margin: 0 0 22px;
+    position: relative;
+    
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CDCDCD #E4E4E4 #E4E4E4;
+    background: #FFF;
+    
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    
+    -webkit-box-shadow: 0px 1px 0px 0 #FFF;
+    -moz-box-shadow: 0px 1px 0px 0 #FFF;
+    box-shadow: 0px 1px 0px 0 #FFF;  
+}
+.page-make .form-list .input {
+    float: left;
+    padding: 8px 10px 5px;
+}
+.page-make .form-list input {
+    width: 200px;
+}
+.page-make .form-list .input:first-child {
+    margin-right: 28px;
+}
+
+.page-make .form-list .textarea {
+    padding: 10px 0 5px 10px;
+    clear: both;
+}
+.page-make .form-list textarea {
+    width: 460px;
+    height: 130px;
+    resize: none;
+    overflow-y: scroll;
+}
+
+.page-make .form-list .text-block input, .page-make .form-list .text-block textarea {
+    border: 0;
+    background: transparent;
+    color: #7E97CB;
+    font-size: 16px;
+}
+
+
+.page-make .btn {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    color: #FFF;
+    text-shadow: 2px 2px 0 #1E85B0;
+    border-bottom: 4px solid #1781AE;
+    width: 468px;
+    margin: 0 auto;
+    text-transform: uppercase;
+    
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    
+    background-color: #34ACDF;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#34ACDF), to(#1FA3DB));
+    background-image: -webkit-linear-gradient(top, #34ACDF, #1FA3DB);
+    background-image: -moz-linear-gradient(top, #34ACDF, #1FA3DB);
+    background-image: -ms-linear-gradient(top, #34ACDF, #1FA3DB);
+    background-image: -o-linear-gradient(top, #34ACDF, #1FA3DB);
+    background-image: linear-gradient(top, #34ACDF, #1FA3DB);
+}
+.page-make .btn .btn-snow-hat {
+    display: block;
+    position: absolute;
+    top: -13px;
+    left: -2px;
+    width: 472px;
+    height: 28px;
+    background: url(../images/sprite_decorations.png) -700px 0 no-repeat;
+}
+
+
+.page-make .sun-decoration {
+    width: 1316px;
+    height: 227px;
+    height: 0px;
+    top: 0;
+    margin: 0 0 0 -658px;
+}
+.page-make .left-sun .sun {
+    width: 261px;
+    height: 227px;
+    left: 0;
+    top: 0;
+    background: url(../images/sprite_decorations.png) 0 -1400px no-repeat;
+}
+
+
+.page-make .sun-decoration .cloud {
+    width: 197px;
+    height: 106px;
+    background: url(../images/sprite_decorations.png) -932px -1461px no-repeat;
+}
+.page-make .left-sun .cloud {
+    left: 932px;
+    top: 61px;
+}
+.page-make .right-sun .cloud-left {
+    left: 243px;
+    top: 31px;
+}
+.page-make .right-sun .cloud-right {
+    left: 1110px;
+    top: 18px;
+}
+
+
+.page-make .ground-snow {
+    width: 1314px;
+    height: 45px;
+    bottom: 0;
+    margin: 0 0 0 -657px;
+    background: url(../images/sprite_decorations.png) 0 -1900px no-repeat;
+}
 
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------*/
