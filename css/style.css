@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------*/
-/*------------------------------RESET DEFAULT STYLES--------------------------------*/
+/*-----------------------------> RESET DEFAULT STYLES <-----------------------------*/
 /*----------------------------------------------------------------------------------*/
 html		                        { width:100%; height:100%; }
 body                            { padding:0; margin:0; font: 14px OpenSans, Arial, Verdana, Helvetica, sans-serif;
@@ -28,6 +28,7 @@ select, input, textarea, input[type="password"], button {
     font-family: OpenSans, Arial, Verdana, Helvetica, sans-serif;
 }
 
+
 /*----------------------------------------------------------------------------------*/
 /*--------------------------------> Default classes <-------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -39,6 +40,9 @@ select, input, textarea, input[type="password"], button {
 }
 .show-on-top {
     z-index: 2;
+}
+.show-on-top-3 {
+    z-index: 3;
 }
 .clear {
     clear: both;
@@ -61,6 +65,7 @@ select, input, textarea, input[type="password"], button {
     color: #7E97CB;
     font-style: italic;
 }
+
 
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------> Custom fonts <--------------------------------*/
@@ -122,11 +127,11 @@ select, input, textarea, input[type="password"], button {
 
 }
 
+
 /*----------------------------------------------------------------------------------*/
 /*--------------------------------> Top navigation <--------------------------------*/
 /*----------------------------------------------------------------------------------*/
 .nav {
-    /*width: 660px;*/
     margin: 0 0 0 -312px;
     overflow: hidden;
     position: fixed;
@@ -143,7 +148,6 @@ select, input, textarea, input[type="password"], button {
     margin: 0;
 }
 .nav a {
-    /*color: #29ABE2;*/
     color: #FFF;
     padding: 2px 10px;
     font-weight: bold;
@@ -159,6 +163,8 @@ select, input, textarea, input[type="password"], button {
     -moz-border-radius: 12px;
     border-radius: 12px;
 }
+
+
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------> First page <----------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -204,8 +210,7 @@ select, input, textarea, input[type="password"], button {
 
 
 .page {
-    width: 1200px;
-    margin: 0 auto;
+    min-width: 1200px;
 }
 .page-home {
     position: relative;
@@ -284,35 +289,6 @@ select, input, textarea, input[type="password"], button {
     background: url(../images/sun_decoration_top.png) no-repeat;
 }
 
-/*
-.section .sun {
-    width: 260px;
-    height: 250px;
-    margin: 0 0 0 -648px;
-    top: -25px;
-    background: url(../images/sun.png) no-repeat;
-}
-
-.section .cloud-white {
-    width: 197px;
-    height: 106px;
-    left: 50%;
-    background: url(../images/cloud.png) no-repeat;
-}
-.section .cloud-white.one {
-    margin: 0 0 0 -397px;
-    top: 62px;
-}
-.section .cloud-white.two {
-    margin: 0 0 0 282px;
-    top: 53px;
-}
-.section .cloud-white.three {
-    margin: 0 0 0 460px;
-    top: 10px;
-}
-*/
-
 
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------> Video page <----------------------------------*/
@@ -341,7 +317,7 @@ select, input, textarea, input[type="password"], button {
     width: 1440px;
     height: 143px;
     margin: 0 0 0 -720px;
-    left: 100%;
+    left: 200%;
     top: -12px;
 }
 .page-about .rain-clouds.rain-clouds-right {
@@ -350,6 +326,7 @@ select, input, textarea, input[type="password"], button {
 .page-about .rain-clouds.rain-clouds-left {
     background: url(../images/sprite_decorations.png) 0 -950px no-repeat;
 }
+
 
 /*----------------------------------------------------------------------------------*/
 /*---------------------------------> Clients page <---------------------------------*/
@@ -413,7 +390,6 @@ select, input, textarea, input[type="password"], button {
     margin: 0 auto;
 }
 .clients-list td {
-    /*float: left;*/
     width: 200px;
     height: 120px;
     padding: 0 10px 15px;
@@ -482,7 +458,6 @@ select, input, textarea, input[type="password"], button {
 
 .portfolio-list {
     overflow: hidden;
-    /*width: 950px;*/
     width: 1024px;
     margin: 0 auto;
     padding: 34px 0 0;
@@ -542,7 +517,10 @@ select, input, textarea, input[type="password"], button {
     width: 146px;
     height: 178px;
     position: absolute;
+    /*
     left: -146px;
+    */
+    left: -292px;
     top: 0;
     background: url(../images/sprite_decorations.png) -1500px 0 no-repeat;
 }
@@ -769,6 +747,7 @@ select, input, textarea, input[type="password"], button {
     opacity: 0;
     background: url(../images/snowflakes.png) center 90px;
 }
+
 
 /*----------------------------------------------------------------------------------*/
 /*----------------------------> Make me a video page <------------------------------*/
