@@ -13,7 +13,18 @@ $(document).ready(function(){
     var pageOrder = 0,
         anchorOrder = 0;
     
-
+    
+    $window.on('resize', function() {
+        
+        window.location.href=window.location.href;
+        
+    });
+    
+    
+    $('.page-home .sun-decoration').css('left', '50%');
+    $('.page-home .sun-decoration').css('left', '50%');    
+    
+    
     $('[data-full-height="true"]').each(function() {
         
         setFullHeight($(this));
@@ -316,9 +327,10 @@ $(document).ready(function(){
         
         var dataTopShift = $self.data('top-shift'),
             dataTopOffset = $self.data('top-offset') - dataTopShift,
-            percent = 0;
+            percent = 0,
+            windowHeight = $window.height();
         
-        $(window).on('scroll resize', function(){
+        $(window).on('scroll', function(){
             
             if ( $window.scrollTop() < dataTopOffset ) {
                 
@@ -331,7 +343,7 @@ $(document).ready(function(){
                 
                 if ((dataTopOffset - $window.scrollTop()) >= 0) {
                     
-                    percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
+                    percent = ((dataTopOffset - $window.scrollTop()) / windowHeight);
                     
                 }
                 
@@ -359,7 +371,7 @@ $(document).ready(function(){
             pageHeight = $self.closest('[data-type="page"]').outerHeight(),
             percent = 0;
         
-        $(window).on('scroll resize', function(){
+        $(window).on('scroll', function(){
             
             if ( $window.scrollTop() < dataTopOffset - pagePrevHeight ) {
                 
@@ -396,9 +408,10 @@ $(document).ready(function(){
         
         var dataTopShift = $self.data('top-shift'),
             dataTopOffset = $self.data('top-offset') - dataTopShift,
-            percent = 0;
+            percent = 0,
+            windowHeight = $window.height();
         
-        $(window).on('scroll resize', function(){
+        $(window).on('scroll', function(){
             
             if ( $window.scrollTop() < dataTopOffset ) {
                 
@@ -410,7 +423,8 @@ $(document).ready(function(){
                 
                 if ((dataTopOffset - $window.scrollTop()) >= 0) {
                     
-                    percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
+                    percent = ((dataTopOffset - $window.scrollTop()) / windowHeight);
+                    
                 }
                 
             } // in view

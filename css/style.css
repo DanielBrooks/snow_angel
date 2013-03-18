@@ -283,10 +283,56 @@ select, input, textarea, input[type="password"], button {
 
 .page-home .sun-decoration {
     width: 1332px;
-    height: 250px;
-    top: -25px;
+    height: 0;
+    top: 0;
     margin: 0 0 0 -666px;
+    
+    -webkit-transition-timing-function: linear;
+    -webkit-transition-property: left;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-delay: 0;
+    
+    -moz-transition-timing-function: linear;
+    -moz-transition-property: left;
+    -moz-transition-duration: 1s;
+    -moz-transition-delay: 0;
+    
+    /*
     background: url(../images/sun_decoration_top.png) no-repeat;
+    */
+}
+.page-home .sun-decoration.left {
+    left: 0;
+}
+.page-home .sun-decoration.right {
+    left: 100%;
+}
+
+.page-home .sun {
+    width: 260px;
+    height: 250px;
+    margin: 0 0 0 -648px;
+    top: -25px;
+    background: url(../images/sprite_decorations.png) -1500px -1050px no-repeat;
+}
+
+.page-home .cloud {
+    width: 197px;
+    height: 106px;
+    left: 50%;
+    background: url(../images/sprite_decorations.png) -932px -1461px no-repeat;
+}
+.page-home .cloud.one {
+    margin: 0 0 0 -397px;
+    top: 62px;
+}
+.page-home .cloud.two {
+    margin: 0 0 0 282px;
+    top: 53px;
+}
+.page-home .cloud.three {
+    margin: 0 0 0 460px;
+    top: 10px;
 }
 
 
