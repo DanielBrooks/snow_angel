@@ -16,7 +16,7 @@ $(document).ready(function(){
     
     $window.on('resize', function() {
         
-        window.location.href=window.location.href;
+        //window.location.href=window.location.href;
         
     });
     
@@ -59,9 +59,12 @@ $(document).ready(function(){
     });
     
     
-    $('[data-circle-bg]').each(function() {
+    $('[data-circle-bg="true"]').each(function() {
         
-        $(this).data('speed', $(this).attr('data-speed'));
+        $(this).data('speedX', $(this).attr('data-speed-x'));
+        $(this).data('speedY', $(this).attr('data-speed-y'));
+        
+        circleBg($(this));
         
     });
     
@@ -222,20 +225,6 @@ $(document).ready(function(){
     });
     
     
-    $('[data-circle-bg="to-left"]').each(function() {
-        
-        circleToLeft($(this));
-        
-    });
-    
-    
-    $('[data-circle-bg="to-right"]').each(function() {
-        
-        circleToRight($(this));
-        
-    });
-    
-    
     $('[data-jumping="true"]').each(function() {
         
         $(this).data('speed', $(this).attr('data-speed'));
@@ -327,8 +316,8 @@ $(document).ready(function(){
         
         var dataTopShift = $self.data('top-shift'),
             dataTopOffset = $self.data('top-offset') - dataTopShift,
-            percent = 0,
-            windowHeight = $window.height();
+            percent = 0;
+            //windowHeight = $window.height();
         
         $(window).on('scroll', function(){
             
@@ -343,7 +332,7 @@ $(document).ready(function(){
                 
                 if ((dataTopOffset - $window.scrollTop()) >= 0) {
                     
-                    percent = ((dataTopOffset - $window.scrollTop()) / windowHeight);
+                    percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
                     
                 }
                 
@@ -408,8 +397,8 @@ $(document).ready(function(){
         
         var dataTopShift = $self.data('top-shift'),
             dataTopOffset = $self.data('top-offset') - dataTopShift,
-            percent = 0,
-            windowHeight = $window.height();
+            percent = 0;
+            //windowHeight = $window.height();
         
         $(window).on('scroll', function(){
             
@@ -423,7 +412,7 @@ $(document).ready(function(){
                 
                 if ((dataTopOffset - $window.scrollTop()) >= 0) {
                     
-                    percent = ((dataTopOffset - $window.scrollTop()) / windowHeight);
+                    percent = ((dataTopOffset - $window.scrollTop()) / $window.height());
                     
                 }
                 
@@ -445,21 +434,22 @@ $(document).ready(function(){
     function pinDecoration($self) {
         
         var dataTopShift = $self.data('top-shift'),
-            closestPageOffset = $self.closest('[data-type="page"]').offset().top;
+            closestPageOffset = $self.closest('[data-type="page"]').offset().top,
+            closestPageHeight = $self.closest('[data-type="page"]').outerHeight();
         
         $(window).on('scroll', function() {
             
             if ( ( closestPageOffset <= $window.scrollTop()) &&
-                ($window.scrollTop() <= closestPageOffset + $self.closest('[data-type="page"]').outerHeight()) ) {
+                ($window.scrollTop() <= closestPageOffset + closestPageHeight) ) {
                 
                 $self.css('top', dataTopShift + $window.scrollTop() - closestPageOffset);
                 
             }
             
             
-            if ( $window.scrollTop() > closestPageOffset + $self.closest('[data-type="page"]').outerHeight() ) {
+            if ( $window.scrollTop() > closestPageOffset + closestPageHeight ) {
                 
-                $self.css('top', dataTopShift + $self.closest('[data-type="page"]').outerHeight());
+                $self.css('top', dataTopShift + closestPageHeight);
                 
             }
             
@@ -532,7 +522,7 @@ $(document).ready(function(){
                 + (parseInt(matchesStart[2], 16) - Math.round(gStep * percent)) + ','
                 + (parseInt(matchesStart[3], 16) - Math.round(bStep  * percent)) + ')';
                 
-                $self.closest('.section').attr('style', 'background-color:' + rgb);
+                $self.closest('.section').css('background-color', rgb);
             }
             
             if ( (firstInSection == true) &&
@@ -542,7 +532,7 @@ $(document).ready(function(){
                 + parseInt(matchesStart[2], 16) + ','
                 + parseInt(matchesStart[3], 16) + ')';
                 
-                $self.closest('.section').attr('style', 'background-color:' + rgb);
+                $self.closest('.section').css('background-color', rgb);
                 
             }
             
@@ -589,37 +579,20 @@ $(document).ready(function(){
         
     }
     
-    function circleToLeft($self) {
+    function circleBg($self) {
         
         // Store some variables based on where we are
         var dataTopOffset = $self.data('top-offset'),
-            dataSpeed = $self.data('speed');
+            dataSpeedX = $self.data('speedX'),
+            dataSpeedY = $self.data('speedY');
         
         $(window).on('scroll', function(){
             
             if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
             ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
                 
-                $self.css('background-position', - (($window.scrollTop() - dataTopOffset) * dataSpeed) + 'px 0');
+                $self.css('background-position', (($window.scrollTop() - dataTopOffset) * dataSpeedX) + 'px ' + (($window.scrollTop() - dataTopOffset) * dataSpeedY) + 'px');
                 
-            }
-            
-        });
-        
-    }
-    
-    function circleToRight($self) {
-        
-        // Store some variables based on where we are
-        var dataTopOffset = $self.data('top-offset'),
-            dataSpeed = $self.data('speed');
-        
-        $(window).on('scroll', function(){
-            
-            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
-            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
-                
-                $self.css('background-position', (($window.scrollTop() - dataTopOffset) * dataSpeed) + 'px 0');
             }
             
         });
@@ -738,7 +711,40 @@ $(document).ready(function(){
         e.preventDefault(); 
         e.stopPropagation();
         
-        $('html, body').stop().animate({scrollTop: $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top}, 1500);
+        $this.closest('li').addClass('current');
+        
+        var $li = $this.closest('li'),
+            flag = 0,
+            speed = 0;
+        
+        $('.nav li').each(function() {
+            
+            if ( ($(this).hasClass('active')) && ($(this).hasClass('current')) ) {
+                
+                flag = 3;
+                speed = 1;
+                
+            }
+            
+            if ( (flag == 0) || (flag == 1) ) {
+                
+                if ( ($(this).hasClass('active')) || ($(this).hasClass('current')) ) {
+                    
+                    flag = flag + 1;
+                    
+                }
+                
+                if (flag == 1) {
+                    speed++;
+                }
+                
+            }
+            
+        });
+        
+        $('.nav li').removeClass('current');
+        
+        $('html, body').stop().animate({scrollTop: $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top}, 2000 * speed);
         
     }
     
