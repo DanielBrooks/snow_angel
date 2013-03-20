@@ -16,7 +16,7 @@ $(document).ready(function(){
     
     $window.on('resize', function() {
         
-        //window.location.href=window.location.href;
+        window.location.href=window.location.href;
         
     });
     
