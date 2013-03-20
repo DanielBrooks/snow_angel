@@ -78,6 +78,8 @@ $(document).ready(function(){
     
     $('[data-fade="out"]').each(function() {
         
+        $(this).data('fade-out-delay', parseInt($(this).attr('data-fade-out-delay')));
+        
         decorationFadeOut($(this));
         
     });
@@ -297,14 +299,21 @@ $(document).ready(function(){
     
     function decorationFadeOut($self) {
         
-        var dataTopOffset = $self.data('top-offset');
+        var dataTopOffset = $self.data('top-offset'),
+            dataDelay = $self.data('fade-out-delay') / 100;
+        
+        if (dataDelay == undefined) {
+            
+            dataDelay = 0;
+            
+        }
         
         $(window).scroll(function(){
             
-            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset) &&
-            ( (dataTopOffset + $self.height()) > $window.scrollTop() ) ) {
+            if ( ($window.scrollTop() + $window.height()) > (dataTopOffset + $self.height() * dataDelay) &&
+            ( (dataTopOffset + $self.height() + $self.height() * dataDelay) > $window.scrollTop() ) ) {
                 
-                $self.css('opacity', ((dataTopOffset - $window.scrollTop()) / ($window.height() / 100)) / 100);
+                $self.css('opacity', ((dataTopOffset + $self.height() * dataDelay - $window.scrollTop()) / ($window.height() / 100)) / 100);
                 
             } // in view
             
@@ -437,19 +446,27 @@ $(document).ready(function(){
             closestPageOffset = $self.closest('[data-type="page"]').offset().top,
             closestPageHeight = $self.closest('[data-type="page"]').outerHeight();
         
+        
         $(window).on('scroll', function() {
+            
+            if ( closestPageOffset > $window.scrollTop() ) {
+                
+                $self.css({'top': dataTopShift, 'position': 'absolute'});
+                
+            }
+            
             
             if ( ( closestPageOffset <= $window.scrollTop()) &&
                 ($window.scrollTop() <= closestPageOffset + closestPageHeight) ) {
                 
-                $self.css('top', dataTopShift + $window.scrollTop() - closestPageOffset);
+                $self.css({'top': dataTopShift, 'position': 'fixed'});
                 
             }
             
             
             if ( $window.scrollTop() > closestPageOffset + closestPageHeight ) {
                 
-                $self.css('top', dataTopShift + closestPageHeight);
+                $self.css({'top': dataTopShift + closestPageHeight, 'position': 'absolute'});
                 
             }
             
@@ -480,10 +497,24 @@ $(document).ready(function(){
         
         $(window).on('scroll', function(){
             
+            if ( startPageOffset > $window.scrollTop() ) {
+                
+                $self.css({'top': startPageOffset + dataTopShift, 'position': 'absolute'});
+                
+            }
+            
+            
             if ( ($window.scrollTop() > startPageOffset) &&
                 ($window.scrollTop() <  startPageOffset + distance) ) {
                 
-                $self.css('top', $window.scrollTop() - dataTopOffset + (dataTopShift * 2));
+                $self.css({'top': dataTopShift * 2, 'position': 'fixed'});
+                
+            }
+            
+            
+            if ( $window.scrollTop() > startPageOffset + distance ) {
+                
+                $self.css({'top': dataTopShift, 'position': 'absolute'});
                 
             }
             
@@ -570,7 +601,19 @@ $(document).ready(function(){
     function setPositionData($self) {
         
         if ($self.attr('data-top-shift') == undefined) {
-            $self.attr('data-top-shift', parseInt($self.css('top')));
+            
+            if ( $self.css('top') == 'auto' ) {
+                
+                var topShift = $self.offset().top - $self.closest('[data-type="page"]').offset().top;
+                
+                $self.attr('data-top-shift', topShift);
+                
+            }
+            else {
+                
+                $self.attr('data-top-shift', parseInt($self.css('top')));
+                
+            }
         }
         
         if ($self.attr('data-top-offset') == undefined) {
@@ -744,7 +787,7 @@ $(document).ready(function(){
         
         $('.nav li').removeClass('current');
         
-        $('html, body').stop().animate({scrollTop: $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top}, 2000 * speed);
+        $('html, body').stop().animate({scrollTop: $('a[name="' + $this.attr('href').split('#')[1] + '"]').offset().top}, 1000 * speed);
         
     }
     
