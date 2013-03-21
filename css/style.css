@@ -360,8 +360,8 @@ select, input, textarea, input[type="password"], button {
 }
 .page-about .umbrella {
     width: 682px;
-    height: 191px;
-    top: 85px;
+    height: 160px;
+    top: -160px;
     margin: 0 0 0 -341px;
     background: url(../images/sprite_decorations.png) 0 -250px no-repeat;
 }
