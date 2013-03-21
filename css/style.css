@@ -974,6 +974,7 @@ select, input, textarea, input[type="password"], button {
     text-shadow: 2px 2px 0 #1E85B0;
     border-bottom: 4px solid #1781AE;
     width: 468px;
+    height: 36px;
     margin: 0 auto;
     text-transform: uppercase;
     

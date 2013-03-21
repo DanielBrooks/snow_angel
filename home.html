@@ -8,13 +8,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.5">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style_static.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
@@ -24,55 +25,43 @@
 
         <!-- Add your site or application content here -->
 
-        <div class="wrapper">
-            <div class="section section-first">
-                
-                <span class="textures"></span>
-                
-                <div class="page page-home" data-require-position="true" data-type="page"
-                     data-bg-color-change="true" data-color-start="#D5F7FE" data-color-stop="#A1CEE7"
-                     data-page-has-pin="true" data-full-height="true">
-                    <a class="anchor" name="page-home"></a>
-                    
-                    <h1>
-                        <a href="#" class="logo relative show-on-top"><img src="images/logo.png" alt="Logo" /></a>
-                    </h1>
-                    
-                    <div class="video-block relative show-on-top">
-                        <span class="decor video-hint"></span>
-                        <img src="images/video_sample.png" alt="Video" />
-                    </div>
-                    
-                    <ul class="media-block relative show-on-top">
-                        <li><a href="#" class="vm"></a></li>
-                        <li><a href="#" class="tw"></a></li>
-                        <li><a href="#" class="fb"></a></li>
-                    </ul>
-                    
-                    <span class="decor sun-decoration left" data-require-position="true" data-pin="true">
-                        <span class="decor sun show-on-top"></span>
-                        <span class="decor cloud one show-on-top"></span>
-                    </span>
-                    
-                    <span class="decor sun-decoration right" data-require-position="true" data-pin="true">
-                        <span class="decor cloud two show-on-top"></span>
-                        <span class="decor cloud three show-on-top"></span>
-                    </span>
-                </div> <!-- /Page home -->
-                
-            </div> <!-- /Section first -->
-            
-        </div>
+        <div class="wrapper page page-home static" data-type="page">
+			
+			<span class="textures"></span>
+			
+			<ul class="nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Clients</a></li>
+				<li><a href="#">Our Work</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">Make Me a Video</a></li>
+			</ul>
+			
+			<div data-page-content="static">
+				
+				<h1>
+					<a href="#" class="logo relative"><img src="images/logo.png" alt="Logo" /></a>
+				</h1>
+				
+				<div class="video-block relative">
+					<span class="decor video-hint"></span>
+					<img src="images/video_sample.png" alt="Video" />
+				</div>
+				
+				<ul class="media-block">
+					<li><a href="#" class="vm"></a></li>
+					<li><a href="#" class="tw"></a></li>
+					<li><a href="#" class="fb"></a></li>
+				</ul>
+				
+			</div>
+			
+			<span class="decor sun-decoration"></span>
+			
+		</div> <!-- /Page home -->
 
-        <ul class="nav">
-            <li class="active"><a href="#page-home">Home</a></li>
-            <li><a href="#page-about">About</a></li>
-            <li><a href="#page-clients">Clients</a></li>
-            <li><a href="#page-portfolio">Our Work</a></li>
-            <li><a href="#page-contacts">Blog</a></li>
-            <li><a href="#page-contacts">Contact</a></li>
-            <li><a href="#page-make">Make Me a Video</a></li>
-        </ul>
 
         <!--
         <script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
@@ -91,6 +80,7 @@
         -->
         
         <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--
