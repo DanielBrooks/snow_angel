@@ -186,6 +186,8 @@ select, input, textarea, input[type="password"], button {
 .textures {
     display: block;
     position: fixed;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background: url(../images/bg_textures.png) no-repeat;
@@ -218,6 +220,7 @@ select, input, textarea, input[type="password"], button {
 
 .page {
     min-width: 1200px;
+    width: 100%;
 }
 .page-home {
     position: relative;
@@ -231,10 +234,7 @@ select, input, textarea, input[type="password"], button {
 }
 
 
-.section .page-home .video-block {
-    margin-top: 34px;
-}
-.section .video-block {
+.page-home .video-block, .page-about .video-block {
     width: 625px;
     height: 350px;
     margin: 0 auto;
@@ -243,6 +243,9 @@ select, input, textarea, input[type="password"], button {
     -webkit-box-shadow: 6px 6px 2px 0 #9F9F9F;
     -moz-box-shadow: 6px 6px 2px 0 #9F9F9F;
     box-shadow: 6px 6px 2px 0 #9F9F9F;
+}
+.page-home .video-block {
+    margin-top: 34px;
 }
 .page-home .video-block .video-hint {
     width: 257px;

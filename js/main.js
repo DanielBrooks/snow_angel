@@ -15,7 +15,7 @@ $(document).ready(function(){
     
     $window.on('debouncedresize', function() {
         
-        window.location.href=window.location.href;
+        //window.location.href=window.location.href;
         
     });
     
@@ -252,12 +252,6 @@ $(document).ready(function(){
         $('[data-page-content="true"]').each(function() {
             
             alignMiddle($(this));
-            
-        });
-        
-        $('[data-page-content="static"]').each(function() {
-            
-            alignMiddleStatic($(this));
             
         });
         
@@ -829,23 +823,6 @@ $(document).ready(function(){
                 
             }
             
-            
-            $self.css({
-                
-                'position': 'absolute',
-                'left': '0',
-                'top': top,
-                'width': '100%'
-                
-            });
-            
-        }
-        
-        function alignMiddleStatic($self) {
-            
-            var top = ($self.closest('[data-type="page"]').outerHeight() - $self.offset().top) / 2 - $self.outerHeight() / 2 + $self.offset().top;
-            
-            $self.closest('[data-type="page"]').css('height', $self.closest('[data-type="page"]').outerHeight());
             
             $self.css({
                 
