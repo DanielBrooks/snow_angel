@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.5">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -34,31 +34,34 @@
                      data-page-has-pin="true" data-full-height="true">
                     <a class="anchor" name="page-home"></a>
                     
-                    <h1>
-                        <a href="#" class="logo relative show-on-top"><img src="images/logo.png" alt="Logo" /></a>
-                    </h1>
-                    
-                    <div class="video-block relative show-on-top">
-                        <span class="decor video-hint"></span>
-                        <img src="images/video_sample.png" alt="Video" />
+                    <div class="show-on-top" data-page-content="true">
+                        
+                        <h1>
+                            <a href="#" class="logo relative show-on-top"><img src="images/logo.png" alt="Logo" /></a>
+                        </h1>
+                        
+                        <div class="video-block relative">
+                            <span class="decor video-hint"></span>
+                            <img src="images/video_sample.png" alt="Video" />
+                        </div>
+                        
+                        <ul class="media-block">
+                            <li><a href="#" class="vm"></a></li>
+                            <li><a href="#" class="tw"></a></li>
+                            <li><a href="#" class="fb"></a></li>
+                        </ul>
+                        
                     </div>
-                    
-                    <ul class="media-block relative show-on-top">
-                        <li><a href="#" class="vm"></a></li>
-                        <li><a href="#" class="tw"></a></li>
-                        <li><a href="#" class="fb"></a></li>
-                    </ul>
-                    
                     
                     <!--
                     <span class="decor sun-decoration show-on-top" data-require-position="true" data-pin="true"></span>
                     -->
-                    <span class="decor sun-decoration left show-on-top" data-require-position="true" data-pin="true">
+                    <span class="decor sun-decoration left show-on-top">
                         <span class="decor sun show-on-top"></span>
                         <span class="decor cloud one show-on-top"></span>
                     </span>
                     
-                    <span class="decor sun-decoration right show-on-top" data-require-position="true" data-pin="true">
+                    <span class="decor sun-decoration right show-on-top">
                         <span class="decor cloud two show-on-top"></span>
                         <span class="decor cloud three show-on-top"></span>
                     </span>
@@ -81,10 +84,15 @@
                     <span class="decor rain-clouds rain-clouds-right show-on-top" data-require-position="true" data-slide="to-left" data-pin-on-top="true" data-pin-distance="1"></span>
                     <span class="decor rain-clouds rain-clouds-left show-on-top" data-require-position="true" data-slide="to-right" data-pin-on-top="true" data-pin-distance="1"></span>
                     
-                    <div class="video-block relative show-on-top">
-                        <span class="decor video-hint"></span>
-                        <img src="images/video_sample.png" alt="Video" />
+                    <div class="show-on-top" data-page-content="true">
+                        
+                        <div class="video-block relative show-on-top">
+                            <span class="decor video-hint"></span>
+                            <img src="images/video_sample.png" alt="Video" />
+                        </div>
+                        
                     </div>
+                    
                 </div> <!-- /Page video -->
             </div> <!-- /Section first -->
             
@@ -105,46 +113,50 @@
                     <span class="decor mine-left" data-require-position="true" data-fade="out" data-fade-out-delay="100"></span>
                     <span class="decor mine-right" data-require-position="true" data-fade="out" data-fade-out-delay="100"></span>
                     
-                    <h2>These are just some of the people we've done them for...</h2>
+                    <div class="show-on-top" data-page-content="true">
                     
-                    <table class="clients-list relative show-on-top">
-                        <tr>
-                            <td>
-                                <a href="#" class="client-logo logo-presentain"><img src="images/logo_presentain.png" alt="Presentain" /></a>
-                            </td>
-                            <td>
-                                <a href="#" class="client-logo logo-moc"><img src="images/logo_moc.png" alt="Master of Code" /></a>
-                            </td>
-                            <td>
-                                <a href="#" class="client-logo logo-artist-ecard"><img src="images/logo_artist_ecard.png" alt="Artist Ecard" /></a>
-                            </td>
-                            <td>
-                                <a href="#" class="client-logo logo-models-ecard"><img src="images/logo_models_ecard.png" alt="Models Ecard" /></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#" class="client-logo logo-kompas-park"><img src="images/logo_kompas_park.png" alt="Kompas Park" /></a>
-                            </td>
-                            <td>
-                                <a href="#" class="client-logo logo-productor"><img src="images/logo_productor.png" alt="Productor" /></a>
-                            </td>
-                            <td>
-                                <a href="#" class="client-logo logo-cherkassy"><img src="images/logo_cherkassy.png" alt="Cherkassy" /></a>
-                            </td>
-                            <td>
-                                <a href="#" class="client-logo logo-cherkassy-state"><img src="images/logo_cherkassy_state.png" alt="Cherkassy State" /></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#" class="client-logo logo-hope-now"><img src="images/logo_hope_now.png" alt="Hope Now" /></a>
-                            </td>
-                            <td>
-                                <a href="#" class="client-logo logo-betegy"><img src="images/logo_betegy.png" alt="Betegy" /></a>
-                            </td>
-                        </tr>
-                    </table>
+                        <h2>These are just some of the people we've done them for...</h2>
+                        
+                        <table class="clients-list relative">
+                            <tr>
+                                <td>
+                                    <a href="#" class="client-logo logo-presentain"><img src="images/logo_presentain.png" alt="Presentain" /></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="client-logo logo-moc"><img src="images/logo_moc.png" alt="Master of Code" /></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="client-logo logo-artist-ecard"><img src="images/logo_artist_ecard.png" alt="Artist Ecard" /></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="client-logo logo-models-ecard"><img src="images/logo_models_ecard.png" alt="Models Ecard" /></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="client-logo logo-kompas-park"><img src="images/logo_kompas_park.png" alt="Kompas Park" /></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="client-logo logo-productor"><img src="images/logo_productor.png" alt="Productor" /></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="client-logo logo-cherkassy"><img src="images/logo_cherkassy.png" alt="Cherkassy" /></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="client-logo logo-cherkassy-state"><img src="images/logo_cherkassy_state.png" alt="Cherkassy State" /></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="client-logo logo-hope-now"><img src="images/logo_hope_now.png" alt="Hope Now" /></a>
+                                </td>
+                                <td>
+                                    <a href="#" class="client-logo logo-betegy"><img src="images/logo_betegy.png" alt="Betegy" /></a>
+                                </td>
+                            </tr>
+                        </table>
+                    
+                    </div>
                     
                 </div> <!-- /Page clients -->
                 
@@ -153,34 +165,38 @@
                      data-require-position="true">
                     <a class="anchor" name="page-portfolio"></a>
                     
-                    <h2 class="relative show-on-top">...and these are the videos we've created</h2>
-                    
-                    <ul class="portfolio-nav relative show-on-top">
-                        <li class="active"><a href="#">Popular<span class="pointer"></span></a></li>
-                        <li><a href="#">Popular<span class="pointer"></span></a></li>
-                        <li><a href="#">Popular<span class="pointer"></span></a></li>
-                        <li><a href="#">Popular<span class="pointer"></span></a></li>
-                        <li><a href="#">Popular<span class="pointer"></span></a></li>
-                    </ul>
-                    
-                    <ul class="portfolio-list relative show-on-top">
-                        <li>
-                            <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
-                            <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
-                        </li>
-                        <li>
-                            <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
-                            <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
-                        </li>
-                        <li>
-                            <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
-                            <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
-                        </li>
-                        <li>
-                            <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
-                            <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
-                        </li>
-                    </ul>
+                    <div class="show-on-top" data-page-content="true">
+                        
+                        <h2>...and these are the videos we've created</h2>
+                        
+                        <ul class="portfolio-nav">
+                            <li class="active"><a href="#">Popular<span class="pointer"></span></a></li>
+                            <li><a href="#">Popular<span class="pointer"></span></a></li>
+                            <li><a href="#">Popular<span class="pointer"></span></a></li>
+                            <li><a href="#">Popular<span class="pointer"></span></a></li>
+                            <li><a href="#">Popular<span class="pointer"></span></a></li>
+                        </ul>
+                        
+                        <ul class="portfolio-list">
+                            <li>
+                                <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
+                            </li>
+                            <li>
+                                <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
+                            </li>
+                            <li>
+                                <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
+                            </li>
+                            <li>
+                                <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
+                            </li>
+                        </ul>
+                        
+                    </div> <!-- page content -->
                     
                     <span class="decor moon show-on-top" data-require-position="true" data-pin-on-top="true"
                           data-pin-distance="2" data-slide-double="to-left" data-fade="in">
@@ -201,32 +217,38 @@
                     
                     <span class="board-holder show-on-top"><span class="base"></span></span>
                     
-                    <div class="hanging-board show-on-top">
-                        <span class="board-textures"></span>
-                        <span class="snow-hat"></span>
+                    <div class="show-on-top" data-page-content="true">
                         
-                        <ul class="media-list">
-                            <li><a href="#" class="blog"><span class="icon"></span>blog</a></li>
-                            <li><a href="#" class="fb"><span class="icon"></span>facebook</a></li>
-                            <li><a href="#" class="tw"><span class="icon"></span>twitter</a></li>
-                            <li><a href="#" class="vimeo"><span class="icon"></span>vimeo</a></li>
-                        </ul>
-                        
-                        <span class="divider"></span>
-                        
-                        <ul class="contacts-list">
-                            <li><span class="title">contact info:</span></li>
-                            <li class="with-icon skype"><a href="#">donesnowangel</a><span class="icon"></span></li>
-                            <li class="with-icon mail"><a href="#">daneek@gmail.com</a><span class="icon"></span></li>
-                        </ul>
-                        
-                        <div class="hint-block clear">
+                        <div class="hanging-board relative">
+                            <span class="board-textures"></span>
+                            <span class="snow-hat"></span>
                             
-                            <span class="hint"><span class="icon"></span>Come on in, we're very hospitable</span>
+                            <ul class="media-list">
+                                <li><a href="#" class="blog"><span class="icon"></span>blog</a></li>
+                                <li><a href="#" class="fb"><span class="icon"></span>facebook</a></li>
+                                <li><a href="#" class="tw"><span class="icon"></span>twitter</a></li>
+                                <li><a href="#" class="vimeo"><span class="icon"></span>vimeo</a></li>
+                            </ul>
+                            
+                            <span class="divider"></span>
+                            
+                            <ul class="contacts-list">
+                                <li><span class="title">contact info:</span></li>
+                                <li class="with-icon skype"><a href="#">donesnowangel</a><span class="icon"></span></li>
+                                <li class="with-icon mail"><a href="#">daneek@gmail.com</a><span class="icon"></span></li>
+                            </ul>
+                            
+                            <div class="hint-block clear">
+                                
+                                <span class="hint"><span class="icon"></span>Come on in, we're very hospitable</span>
+                            </div>
                         </div>
+                        
                     </div>
                     
-                    <span class="decor trees show-on-top" data-require-position="true" data-pin="true"></span>
+                    <span class="decor trees show-on-top" data-require-position="true" data-pin="true">
+                        <img src="/images/trees.png" alt="Image" />
+                    </span>
                     
                     <span class="decor snowflakes" data-require-position="true" data-fade="in" data-pin-on-top="true"
                           data-pin-distance="2" data-circle-bg="true" data-speed-x="0.25" data-speed-y="0.5"></span>
@@ -239,29 +261,35 @@
                     <a class="anchor" name="page-make"></a>
                     
                     <span class="board-holder show-on-top" data-full-height="true"></span>                    
-                    <span class="decor ground-snow show-on-top"></span>
+                    <span class="decor ground-snow show-on-top">
+                        <img src="/images/ground_snow_cover.png" alt="Image" />
+                    </span>
                     
-                    <div class="standing-board show-on-top">
-                        <span class="board-textures"></span>
-                        <span class="snow-hat"></span>
+                    <div class="show-on-top" data-page-content="true">
                         
-                        <h2>
-                            <span class="caption">
-                                Let us make one for you
-                                <span class="icon icon-left"></span>
-                                <span class="icon icon-right"></span>
-                            </span>
-                        </h2>
-                        
-                        <form>
-                            <ul class="form-list">
-                                <li class="text-block input"><input type="text" class="here" placeholder="Name" /></li>
-                                <li class="text-block input"><input type="text" placeholder="Email" /></li>
-                                <li class="text-block textarea"><textarea placeholder="Message"></textarea></li>
-                                
-                                <li class="buttons-block"><button type="submit" class="btn">send<span class="btn-snow-hat"></span></button></li>
-                            </ul>
-                        </form>
+                        <div class="standing-board relative">
+                            <span class="board-textures"></span>
+                            <span class="snow-hat"></span>
+                            
+                            <h2>
+                                <span class="caption">
+                                    Let us make one for you
+                                    <span class="icon icon-left"></span>
+                                    <span class="icon icon-right"></span>
+                                </span>
+                            </h2>
+                            
+                            <form>
+                                <ul class="form-list">
+                                    <li class="text-block input"><input type="text" class="here" placeholder="Name" /></li>
+                                    <li class="text-block input"><input type="text" placeholder="Email" /></li>
+                                    <li class="text-block textarea"><textarea placeholder="Message"></textarea></li>
+                                    
+                                    <li class="buttons-block"><button type="submit" class="btn">send<span class="btn-snow-hat"></span></button></li>
+                                </ul>
+                            </form>
+                            
+                        </div>
                         
                     </div>
                     
