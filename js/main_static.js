@@ -11,48 +11,43 @@ $(document).ready(function(){
     });
     
     
-    $('img').imagesLoaded(function() {
+    $('[data-page-content="static"]').each(function() {
+        
+        alignMiddleStatic($(this));
+        
+    });
+    
+    
+    
+    function alignMiddleStatic($self) {
+        
+        var topPadding = parseInt($self.css('padding-top')),
+            
+            top = $self.closest('[data-type="page"]').outerHeight() / 2 -
+                    ($self.outerHeight() - topPadding) / 2;
         
         
-        $('[data-page-content="static"]').each(function() {
-            
-            alignMiddleStatic($(this));
-            
-        });
+        $self.closest('[data-type="page"]').css('height', $self.closest('[data-type="page"]').height());
+        $self.css('padding-top', 0);
         
         
-        
-        function alignMiddleStatic($self) {
+        if ( top < topPadding ) {
             
-            var topPadding = parseInt($self.css('padding-top')),
-                
-                top = $self.closest('[data-type="page"]').outerHeight() / 2 -
-                        ($self.outerHeight() - topPadding) / 2;
-            
-            
-            $self.closest('[data-type="page"]').css('height', $self.closest('[data-type="page"]').height());
-            $self.css('padding-top', 0);
-            
-            
-            if ( top < topPadding ) {
-                
-                top = topPadding;
-                
-            }
-            
-            
-            $self.css({
-                
-                'position': 'absolute',
-                'left': '0',
-                'top': top,
-                'width': '100%'
-                
-            });
+            top = topPadding;
             
         }
         
-    }); // images loaded
+        
+        $self.css({
+            
+            'position': 'absolute',
+            'left': '0',
+            'top': top,
+            'width': '100%'
+            
+        });
+        
+    }
     
 }); // document ready
 

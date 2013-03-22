@@ -42,9 +42,6 @@
 .static.page-about {
     background: #A1CEE7;
 }
-.static.page-about .nav {
-    top: 110px;
-}
 .static.page-about .rain-clouds {
     left: 50%;
 }
@@ -69,26 +66,23 @@
 .static.page-clients {
     background: #5D7FB6;
 }
-.static.page-clients .nav {
-    top: 100px;
-}
 .static.page-clients .submarine {
-    top: 20px;
+    top: -75px;
     margin-top: 0;
 }
 .static.page-clients .page-content {
-    padding: 180px 0 0;
+    padding: 150px 0 0;
 }
-
+.static.page-clients h2 {
+    position: relative;
+    padding-bottom: 75px;
+}
 
 /*----------------------------------------------------------------------------------*/
 /*--------------------------------> Portfolio page <--------------------------------*/
 /*----------------------------------------------------------------------------------*/
 .static.page-portfolio {
     background: #233257;
-}
-.static.page-portfolio .nav {
-    top: 46px;
 }
 .static.page-portfolio .page-content {
     padding: 112px 0 0;
@@ -114,9 +108,6 @@
 .static.page-contacts {
     background: #131435;
 }
-.static.page-contacts .nav {
-    top: 43px;
-}
 .static.page-contacts .page-content {
     padding: 215px 0 0;
 }
@@ -128,13 +119,57 @@
 .static.page-make {
     background: #96CAF1;
 }
-.static.page-make .nav {
-    top: 50px;
-}
 .static.page-make .page-content {
     padding: 250px 0 200px;
 }
 
+
+
+
+/*----------------------------------------------------------------------------------*/
+/*-------------------------------> Mobile devices <---------------------------------*/
+/*----------------------------------------------------------------------------------*/
+
+/* Default wide-screen styles */
+
+@media all and (max-width: 1024px) {
+    /* styles for narrow desktop browsers and iPad landscape */
+}
+
+@media all and (max-width: 768px) {
+    /* styles for narrower desktop browsers and iPad portrait */
+}
+
+@media all and (max-width: 480px) {
+    /* styles for iPhone/Android landscape (and really narrow browser windows) */
+}
+
+@media all and (max-width: 320px) {
+    /* styles for iPhone/Android portrait */
+}
+
+@media all and (max-width: 240px) {
+    /* styles for smaller devices */
+}
+
+
+@media all and (max-width: 1024px) {
+    
+    .wrapper {
+        width: 100%;
+    }
+    html, body {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .page {
+        min-width: 100%;
+        max-width: 768px;
+        width: auto;
+    }
+    
+}
 
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------*/
