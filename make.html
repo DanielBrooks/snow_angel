@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.5">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -25,44 +25,75 @@
 
         <!-- Add your site or application content here -->
 
-        <div class="wrapper page page-home static" data-type="page">
+        <div class="wrapper page page-make static" data-type="page">
 			
 			<span class="textures">
                 <img src="/images/bg_textures.png" alt="Textures" />
             </span>
 			
+            <span class="decor trees">
+                <img src="/images/trees.png" alt="Image" />
+            </span>
+            
+            <span class="decor snowflakes"></span>
+            
+            <span class="board-holder"></span>                    
+            <span class="decor ground-snow">
+                <img src="/images/ground_snow_cover.png" alt="Image" />
+            </span>
+            
             <ul class="nav">
-				<li class="active"><a href="home.html">Home</a></li>
+				<li><a href="home.html">Home</a></li>
 				<li><a href="about.html">About</a></li>
 				<li><a href="clients.html">Clients</a></li>
 				<li><a href="portfolio.html">Our Work</a></li>
 				<li><a href="#">Blog</a></li>
 				<li><a href="contacts.html">Contact</a></li>
-				<li><a href="make.html">Make Me a Video</a></li>
+				<li class="active"><a href="make.html">Make Me a Video</a></li>
 			</ul>
-			
-			<div class="page-content" data-page-content="static">
+            
+            <div class="page-content" data-page-content="static">
 				
-				<h1>
-					<a href="#" class="logo relative"><img src="images/logo.png" alt="Logo" /></a>
-				</h1>
-				
-				<div class="video-block relative">
-					<span class="decor video-hint"></span>
-					<img src="images/video_sample.png" alt="Video" />
-				</div>
-				
-				<ul class="media-block">
-					<li><a href="#" class="vm"></a></li>
-					<li><a href="#" class="tw"></a></li>
-					<li><a href="#" class="fb"></a></li>
-				</ul>
+                <div class="standing-board relative">
+                    <span class="board-textures"></span>
+                    <span class="snow-hat"></span>
+                    
+                    <h2>
+                        <span class="caption">
+                            Let us make one for you
+                            <span class="icon icon-left"></span>
+                            <span class="icon icon-right"></span>
+                        </span>
+                    </h2>
+                    
+                    <form>
+                        <ul class="form-list">
+                            <li class="text-block input"><input type="text" class="here" placeholder="Name" /></li>
+                            <li class="text-block input"><input type="text" placeholder="Email" /></li>
+                            <li class="text-block textarea"><textarea placeholder="Message"></textarea></li>
+                            
+                            <li class="buttons-block"><button type="submit" class="btn">send<span class="btn-snow-hat"></span></button></li>
+                        </ul>
+                    </form>
+                    
+                </div>
 				
 			</div>
 			
-			<span class="decor sun-decoration"></span>
-			
-		</div> <!-- /Page home -->
+            <span class="snowman show-on-top"></span>
+            
+            <span class="decor sun-decoration left-sun">
+                
+                <span class="decor sun"></span>
+                <span class="decor cloud cloud-left"></span>
+            </span>
+            
+            <span class="decor sun-decoration right-sun">
+                <span class="decor cloud cloud-middle"></span>
+                <span class="decor cloud cloud-right"></span>
+            </span>
+            
+        </div> <!-- /Page contacts -->
 
 
         <!--

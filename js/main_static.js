@@ -3,9 +3,6 @@ $(document).ready(function(){
     // Cache the Window object
     $window = $(window);
     
-    var pageOrder = 0,
-        anchorOrder = 0;
-    
     
     $window.on('debouncedresize', function() {
         

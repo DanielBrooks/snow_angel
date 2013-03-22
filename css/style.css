@@ -545,7 +545,7 @@ select, input, textarea, input[type="password"], button {
     color: #7E97CB;
 }
 
-.page-portfolio .night-clouds {
+.page-portfolio .night-clouds, .page-contacts .night-clouds {
     top: 22px;
     width: 1416px;
     height: 104px;
@@ -553,7 +553,7 @@ select, input, textarea, input[type="password"], button {
     background: url(../images/sprite_decorations.png) 0 -1250px no-repeat;
     opacity: 0;
 }
-.page-portfolio .stars {
+.page-portfolio .stars, .page-contacts .stars {
     top: 0;
     width: 1200px;
     height: 172px;
@@ -573,9 +573,6 @@ select, input, textarea, input[type="password"], button {
     width: 146px;
     height: 178px;
     position: absolute;
-    /*
-    left: -146px;
-    */
     left: -292px;
     top: 0;
     background: url(../images/sprite_decorations.png) -1500px 0 no-repeat;
@@ -789,28 +786,15 @@ select, input, textarea, input[type="password"], button {
     height: 264px;
     background: url(../images/sprite_decorations.png) -1500px -750px no-repeat;
 }
-.page-contacts .trees {
-    /*
-    width: 1274px;
-    background: url(../images/sprite_decorations.png) 0 -450px no-repeat;
-    height: 226px;
-    */
+.page-contacts .trees, .page-make .trees {
     width: 100%;
     bottom: 0;
     margin: 0 0 0 -50%;
-    /*
-    background: url(../images/trees.png) no-repeat;
-    
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;     
-    */
 }
-.page-contacts .trees img {
+.page-contacts .trees img, .page-make .trees img {
     width: 100%;
 }
-.page-contacts .snowflakes {
+.page-contacts .snowflakes, .page-make .snowflakes {
     width: 100%;
     height: 100%;
     left: 0;
