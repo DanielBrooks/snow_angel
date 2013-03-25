@@ -174,7 +174,11 @@ $(document).ready(function(){
         
         $('.nav a').on('click', function(e) {
             
-            makeAnchor(e, $(this));
+            if ($(this).attr('rel') !== 'external') {
+                
+                makeAnchor(e, $(this));
+                
+            }
             
         });
         

@@ -265,13 +265,18 @@ select, input, textarea, input[type="password"], button {
 
 .page-home .media-block {
     overflow: hidden;
+    /*
     width: 365px;
-    margin: 0 auto;
     padding: 46px 0 140px 260px;
+    */
+    width: 625px;
+    text-align: center;
+    padding: 46px 0 140px;
+    margin: 0 auto;
 }
 .page-home .media-block li {
-    float: left;
-    margin: 0 18px 0 0;
+    display: inline-block;
+    margin: 0 9px;
 }
 .page-home .media-block a {
     display: block;
@@ -445,7 +450,7 @@ select, input, textarea, input[type="password"], button {
     width: 880px;
     margin: 0 auto;
 }
-.clients-list td {
+.clients-list td, .clients-list li {
     width: 200px;
     height: 120px;
     padding: 0 10px 15px;
@@ -474,7 +479,7 @@ select, input, textarea, input[type="password"], button {
 }
 .portfolio-nav li {
     display: inline-block;
-    padding: 0 9px;
+    padding: 0 9px 15px;
 }
 .portfolio-nav a {
     display: block;
@@ -516,7 +521,7 @@ select, input, textarea, input[type="password"], button {
     overflow: hidden;
     width: 1024px;
     margin: 0 auto;
-    padding: 34px 0 0;
+    padding: 19px 0 0;
 }
 .portfolio-list li {
     float: left;

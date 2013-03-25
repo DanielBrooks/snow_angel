@@ -33,7 +33,33 @@
     background: url(../images/sprite_decorations.png) 0 -700px no-repeat;
     height: 250px;
     top: -25px;
+    
+    /*
+    height: 0;
+    min-width: 1024px;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    */
 }
+
+/*
+.static.page-home .sun-decoration .decor {
+    height: 250px;
+    top: -25px;
+}
+.static.page-home .sun-decoration .left {
+    width: 455px;
+    left: 0;
+    background: url(../images/sprite_decorations.png) 0 -700px no-repeat;
+}
+.static.page-home .sun-decoration .right {
+    width: 384px;
+    left: auto;
+    right: 0;
+    background: url(../images/sprite_decorations.png) -948px -700px no-repeat;
+}
+*/
 
 
 /*----------------------------------------------------------------------------------*/
@@ -70,6 +96,9 @@
     top: -75px;
     margin-top: 0;
 }
+.static.page-clients .page-content.relative .submarine {
+    top: 75px;
+}
 .static.page-clients .page-content {
     padding: 150px 0 0;
 }
@@ -78,6 +107,28 @@
     padding-bottom: 75px;
 }
 
+.static.page-clients .clients-list li {
+    float: left;
+}
+.static.page-clients .clients-list li span {
+    display: block;
+    /*
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    */
+}
+/*
+.static.page-clients .clients-list li span a {
+    display: inline-block;
+    position: relative;
+}
+.static.page-clients .clients-list li span a img {
+    margin-top: -25%;
+    display: block;
+}
+*/
 /*----------------------------------------------------------------------------------*/
 /*--------------------------------> Portfolio page <--------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -122,7 +173,10 @@
 .static.page-make .page-content {
     padding: 250px 0 200px;
 }
-
+.static.page-make .sun-decoration {
+    max-width: 1316px;
+    width: 100%;
+}
 
 
 
@@ -134,18 +188,127 @@
 
 @media all and (max-width: 1024px) {
     /* styles for narrow desktop browsers and iPad landscape */
+    
+     .wrapper {
+        width: 100%;
+    }
+    html, body {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .page {
+        min-width: 100%;
+        max-width: 1024px;
+        width: auto;
+    }
+    
+    .static.page-clients .clients-list img {
+        max-width: 100%;
+    }
+    
 }
 
 @media all and (max-width: 768px) {
     /* styles for narrower desktop browsers and iPad portrait */
+    
+    .static.page-clients .clients-list {
+        width: 660px;
+    }
+    .static.page-clients .clients-list li {
+        width: 200px;
+    }
+    
+    .portfolio-list {
+        width: 768px;
+    }
+    .portfolio-list li {
+        margin-left: 61px;
+    }
+    
 }
 
 @media all and (max-width: 480px) {
     /* styles for iPhone/Android landscape (and really narrow browser windows) */
+    
+    .static .nav {
+        left: 2%;
+        top: 15px;
+        margin: 0;
+        width: 96%;
+        background: rgba(0,0,0, 0.75);
+    }
+    .static .nav li {
+        padding: 6px 0;
+    }
+    
+    .static .video-block {
+        width: 480px;
+        height: auto;
+    }
+    .static .video-block img {
+        width: 100%;
+    }
+    
+    .static.page-home .media-block {
+        width: 480px;
+        padding-bottom: 40px;
+    }
+    .static .ground-snow {
+        bottom: -1px;
+    }
+    
+    .static.page-clients .page-content {
+        padding: 140px 0 0;
+    }
+    .static.page-clients .clients-list {
+        width: 480px;
+    }
+    .static.page-clients .clients-list li {
+        width: 220px;
+    }
+    .static.page-clients h2 {
+        padding-bottom: 45px;
+    }
+    
+    
+    .portfolio-list {
+        width: 480px;
+    }
+    .portfolio-list li {
+        margin-left: 94px;
+    }
 }
 
 @media all and (max-width: 320px) {
     /* styles for iPhone/Android portrait */
+    
+    .static .video-block {
+        width: 320px;
+        height: auto;
+    }
+    
+    .static.page-clients .clients-list {
+        width: 320px;
+    }
+    .static.page-clients .clients-list li {
+        width: 140px;
+    }
+    
+    .static.page-home .media-block {
+        width: 320px;
+    }
+    
+    .portfolio-list {
+        width: 320px;
+    }
+    .portfolio-list li {
+        margin-left: 14px;
+    }
+
+
+
+
 }
 
 @media all and (max-width: 240px) {
@@ -153,6 +316,8 @@
 }
 
 
+
+/*
 @media all and (max-width: 1024px) {
     
     .wrapper {
@@ -170,6 +335,8 @@
     }
     
 }
+*/
+
 
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------*/

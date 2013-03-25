@@ -17,7 +17,23 @@ $(document).ready(function(){
         
     });
     
+    alignLogo();
     
+    $window.on('orientationchange', function() {
+        
+        alignLogo();
+        
+    });
+    
+    function alignLogo() {
+        
+        $('.clients-list li > span').each (function() {
+            
+            $(this).css('margin-top', $(this).closest('li').height() / 2 - $(this).height() / 2);
+            
+        });
+        
+    }
     
     function alignMiddleStatic($self) {
         
@@ -27,25 +43,34 @@ $(document).ready(function(){
                     ($self.outerHeight() - topPadding) / 2;
         
         
-        $self.closest('[data-type="page"]').css('height', $self.closest('[data-type="page"]').height());
-        $self.css('padding-top', 0);
         
         
-        if ( top < topPadding ) {
+        if ( top >= topPadding ) {
             
-            top = topPadding;
+            $self.closest('[data-type="page"]').css('height', $self.closest('[data-type="page"]').height());
+            $self.css('padding-top', 0);
+            
+            //top = topPadding;
+            
+            $self.css({
+                
+                'position': 'absolute',
+                'left': '0',
+                'top': top,
+                'width': '100%'
+                
+            });
+            
+            $self.removeClass('relative');
+            
+        }
+        else if ( top < topPadding ) {
+            
+            $self.addClass('relative');
             
         }
         
         
-        $self.css({
-            
-            'position': 'absolute',
-            'left': '0',
-            'top': top,
-            'width': '100%'
-            
-        });
         
     }
     
