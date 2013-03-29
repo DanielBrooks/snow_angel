@@ -226,6 +226,13 @@
         margin-left: 61px;
     }
     
+    .lightbox {
+        width: 768px;
+        margin-left: -384px;
+    }
+    .lightbox iframe {
+        width: 768px;
+    }
 }
 
 @media all and (max-width: 480px) {
