@@ -26,6 +26,48 @@
 
 
 /*
+ *
+ * Portfolio page
+ *
+ * Lightboxes for videos
+ *
+ *
+ */
+
+$(document).ready(function(){
+    
+    $('#tabs').tabs();
+    
+    
+    $('.portfolio-list a').each(function() {
+        
+        $(this).data('video-id', $(this).attr('data-video-id'));
+        
+    });
+    
+    $('.portfolio-list a').on('click', function(e) {
+        
+        e.preventDefault(); 
+        e.stopPropagation();
+        
+        $('.overlay, #' + $(this).data('video-id')).css('display', 'block');
+        
+    });
+    
+    $('.overlay, .lightbox .close').on('click', function(e) {
+        
+        e.preventDefault(); 
+        e.stopPropagation();
+        
+        $('.overlay, .lightbox').css('display', 'none');
+        
+    });    
+    
+});
+
+
+
+/*
  * debouncedresize: special jQuery event that happens once after a window resize
  *
  * latest version and complete README available on Github:

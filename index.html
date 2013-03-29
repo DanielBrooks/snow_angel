@@ -14,6 +14,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        
         <link rel="stylesheet" href="css/style.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -170,32 +171,54 @@
                         
                         <h2>...and these are the videos we've created</h2>
                         
-                        <ul class="portfolio-nav">
-                            <li class="active"><a href="#">Popular<span class="pointer"></span></a></li>
-                            <li><a href="#">Popular<span class="pointer"></span></a></li>
-                            <li><a href="#">Popular<span class="pointer"></span></a></li>
-                            <li><a href="#">Popular<span class="pointer"></span></a></li>
-                            <li><a href="#">Popular<span class="pointer"></span></a></li>
-                        </ul>
+                        <div id="tabs">
+                            <ul class="portfolio-nav">
+                                <li><a href="#tabs-1">Popular<span class="pointer"></span></a></li>
+                                <li><a href="#tabs-2">Popular<span class="pointer"></span></a></li>
+                                <li><a href="#tabs-3">Popular<span class="pointer"></span></a></li>
+                                <li><a href="#tabs-4">Popular<span class="pointer"></span></a></li>
+                                <li><a href="#tabs-5">Popular<span class="pointer"></span></a></li>
+                            </ul>
+                            <div id="tabs-1">
+                                <ul class="portfolio-list">
+                                    <li>
+                                        <a href="#" class="video" data-video-id="video-1"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                        <div class="video-title"><a href="#" data-video-id="video-1">Creative Video For Kuchma Art</a></div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="video" data-video-id="video-1"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                        <div class="video-title"><a href="#" data-video-id="video-1">Creative Video For Kuchma Art</a></div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="video" data-video-id="video-1"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                        <div class="video-title"><a href="#" data-video-id="video-1">Creative Video For Kuchma Art</a></div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="video" data-video-id="video-1"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                        <div class="video-title"><a href="#" data-video-id="video-1">Creative Video For Kuchma Art</a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="tabs-2">
+                                <ul class="portfolio-list">
+                                    <li>
+                                        <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                        <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
+                                        <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="tabs-3">
+                            </div>
+                            <div id="tabs-4">
+                            </div>
+                            <div id="tabs-5">
+                            </div>
+                        </div>    
                         
-                        <ul class="portfolio-list">
-                            <li>
-                                <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
-                                <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
-                            </li>
-                            <li>
-                                <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
-                                <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
-                            </li>
-                            <li>
-                                <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
-                                <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
-                            </li>
-                            <li>
-                                <a href="#" class="video"><img src="images/video_sample_portfolio.png" alt="Video" /></a>
-                                <div class="video-title"><a href="#">Creative Video For Kuchma Art</a></div>
-                            </li>
-                        </ul>
                         
                     </div> <!-- page content -->
                     
@@ -323,23 +346,18 @@
             <li><a href="#page-contacts">Contact</a></li>
             <li><a href="#page-make">Make Me a Video</a></li>
         </ul>
-
-        <!--
-        <script type="text/javascript" src="js/greensock/TweenMax.min.js"></script>
-        -->
         
-        <!--
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        -->
-    	
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <div class="overlay"></div>
+        <div id="video-1" class="lightbox">
+            <a href="#" class="close">close</a>
+            <iframe width="960" height="534" src="http://www.youtube.com/embed/kfVsfOSbJY0" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
         
-        <!--
-        <script src="js/jquery.lettering-0.6.1.min.js"></script>
-        <script src="js/jquery.superscrollorama.js"></script>
-        -->
-        
+        <script src="js/jquery_custom_tabs.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
