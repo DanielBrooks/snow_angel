@@ -498,7 +498,10 @@ $(document).ready(function(){
                 startPage = $self.closest('[data-type="page"]').data('page-order') - 1,
                 stopPage = startPage + dataPinDistance,
                 
-                startPageOffset = $('[data-page-order="' + startPage + '"]').offset().top;
+                startPageOffset = $('[data-page-order="' + startPage + '"]').offset().top,
+                
+                freezeDistance = $('[data-page-order="' + (stopPage + 1) + '"]').offset().top -
+                                $('[data-page-order="' + (startPage + 1) + '"]').offset().top;
             
             
             for ( var i = startPage; i <= stopPage; i++) {
@@ -527,7 +530,16 @@ $(document).ready(function(){
                 
                 if ( $window.scrollTop() > startPageOffset + distance ) {
                     
-                    $self.css({'top': dataTopShift, 'position': 'absolute'});
+                    if (dataPinDistance == 0) {
+                        
+                        $self.css({'top': dataTopShift, 'position': 'absolute'});
+                        
+                    }
+                    else {
+                        
+                        $self.css({'top': freezeDistance, 'position': 'absolute'});
+                        
+                    }
                     
                 }
                 

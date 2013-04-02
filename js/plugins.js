@@ -36,8 +36,12 @@
 
 $(document).ready(function(){
     
-    $('#tabs').tabs();
-    
+    console.log($('#tabs').length);
+    if ($('#tabs').length) {
+        
+        $('#tabs').tabs();
+        
+    }
     
     $('.portfolio-list a').each(function() {
         

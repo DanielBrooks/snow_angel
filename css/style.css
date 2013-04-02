@@ -396,7 +396,7 @@ select, input, textarea, input[type="password"], button {
     background-color: #5D7FB6;
 }
 .page-clients {
-    padding: 187px 0 0;
+    padding: 150px 0 0;
     position: relative;
 }
 
@@ -413,8 +413,8 @@ select, input, textarea, input[type="password"], button {
     display: block;
     width: 980px;
     height: 146px;
-    top: 15px;
-    margin: -50px 0 0 -490px;
+    top: 75px;
+    margin: 0 0 0 -490px;
     background: url(../images/sprite_decorations.png) 0 -100px no-repeat;
 }
 .page-clients .mine-left {
@@ -433,11 +433,15 @@ select, input, textarea, input[type="password"], button {
 }
 
 
-
+.page-clients h2 {
+    padding: 0 0 75px;
+}
+.page-portfolio h2 {
+    padding: 0 0 15px;
+}
 .page-clients h2, .page-portfolio h2 {
     text-shadow: 2px 3px #3E5E99;
     color: #FFF;
-    padding: 0 0 15px;
     text-align: center;
     
     font-size: 20px;
@@ -520,6 +524,7 @@ select, input, textarea, input[type="password"], button {
 .portfolio-list {
     overflow: hidden;
     width: 1024px;
+    min-height: 476px;
     margin: 0 auto;
     padding: 19px 0 0;
 }
