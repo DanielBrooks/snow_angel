@@ -36,13 +36,6 @@
 
 $(document).ready(function(){
     
-    console.log($('#tabs').length);
-    if ($('#tabs').length) {
-        
-        $('#tabs').tabs();
-        
-    }
-    
     $('.portfolio-list a').each(function() {
         
         $(this).data('video-id', $(this).attr('data-video-id'));

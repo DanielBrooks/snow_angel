@@ -1,10 +1,10 @@
 /*
  * - caching some data might be done in one function instead of two (along with setting attribute)
- *
+ * - if make anchor function is executing scroll event should stop it
  */
 
 
-$(document).ready(function(){
+$(document).ready(function() {
     
     // Cache the Window object
     $window = $(window);
@@ -16,12 +16,67 @@ $(document).ready(function(){
     $window.on('debouncedresize', function() {
         
         //window.location.href=window.location.href;
+        animationReset();
+        animationInit();
+        animationLaunch();
+        
+    });
+    
+    
+    $('[data-type="page"]').each(function() {
+        
+        $(this).attr('data-page-order', ++pageOrder);
+        
+    });
+    
+    $('[data-type="page"]').each(function() {
+        
+        $(this).data('page-order', parseInt($(this).attr('data-page-order')));
         
     });
     
     
     $('img').imagesLoaded(function() {
         
+        animationInit();
+        
+    }); // images loaded
+    
+    
+    
+    
+    function animationLaunch() {
+        
+        $('html, body').stop().animate({scrollTop: $window.scrollTop() + 1}, 500);
+        
+    }
+    
+
+    function animationReset() {
+        
+        $('[style]').each(function() {
+            
+            if ($(this).closest('[data-reset="false"]').length == 0) {
+                
+                $(this).removeAttr('style');
+                
+            }
+            
+        });
+        
+        $('[data-top-shift]').removeAttr('data-top-shift');
+        $('[data-top-offset]').removeAttr('data-top-offset');
+        
+    }
+
+
+    function animationInit() {
+        
+        if ($('#tabs').length) {
+            
+            $('#tabs').tabs();
+            
+        }
         
         $('.page-home .sun-decoration').css('left', '50%');
         $('.page-home .sun-decoration').css('left', '50%');    
@@ -30,19 +85,6 @@ $(document).ready(function(){
         $('[data-full-height="true"]').each(function() {
             
             setFullHeight($(this));
-            
-        });
-        
-        
-        $('[data-type="page"]').each(function() {
-            
-            $(this).attr('data-page-order', ++pageOrder);
-            
-        });
-        
-        $('[data-type="page"]').each(function() {
-            
-            $(this).data('page-order', parseInt($(this).attr('data-page-order')));
             
         });
         
@@ -258,7 +300,6 @@ $(document).ready(function(){
             alignMiddle($(this));
             
         });
-        
         
         
         
@@ -851,7 +892,8 @@ $(document).ready(function(){
             
         }
         
-    }); // images loaded
+    } // animation init
+    
     
 }); // document ready
 

@@ -409,6 +409,9 @@ select, input, textarea, input[type="password"], button {
     height: 50px;
     background: url(../images/wave.png) repeat-x;
 }
+.page-clients .wave.second {
+    background-position: 30px 0;
+}
 .submarine {
     display: block;
     width: 980px;

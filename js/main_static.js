@@ -19,6 +19,14 @@ $(document).ready(function(){
     
     alignLogo();
     
+    
+    if ($('#tabs').length) {
+        
+        $('#tabs').tabs();
+        
+    }
+    
+    
     $window.on('orientationchange', function() {
         
         alignLogo();
