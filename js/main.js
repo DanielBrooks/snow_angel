@@ -1,6 +1,7 @@
 /*
  * - caching some data might be done in one function instead of two (along with setting attribute)
  * - if make anchor function is executing scroll event should stop it
+ * - 
  */
 
 
@@ -39,10 +40,21 @@ $(document).ready(function() {
     $('img').imagesLoaded(function() {
         
         animationInit();
+        alignLogo();
         
     }); // images loaded
     
     
+    
+    function alignLogo() {
+        
+        $('.clients-list li > span').each (function() {
+            
+            $(this).css('margin-top', $(this).closest('li').height() / 2 - $(this).height() / 2);
+            
+        });
+        
+    }        
     
     
     function animationLaunch() {
@@ -77,6 +89,7 @@ $(document).ready(function() {
             $('#tabs').tabs();
             
         }
+        
         
         $('.page-home .sun-decoration').css('left', '50%');
         $('.page-home .sun-decoration').css('left', '50%');    

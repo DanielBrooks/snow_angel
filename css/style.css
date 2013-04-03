@@ -460,9 +460,13 @@ select, input, textarea, input[type="password"], button {
 .clients-list td, .clients-list li {
     width: 200px;
     height: 120px;
+    float: left;
     padding: 0 10px 15px;
     text-align: center;
     vertical-align: middle;
+}
+.clients-list li > span {
+    display: block;
 }
 .clients-list a {
     opacity: 1;
