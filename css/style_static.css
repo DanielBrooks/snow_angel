@@ -20,6 +20,12 @@
     opacity: 1;
 }
 
+
+.nav-block .menu {
+    display: none;
+}
+
+    
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------> Home page <-----------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -162,7 +168,9 @@
 .static.page-contacts .page-content {
     padding: 215px 0 0;
 }
-
+.static.page-contacts .page-content .holder-wrap {
+    position: relative;
+}
 
 /*----------------------------------------------------------------------------------*/
 /*-----------------------------------> Make page <----------------------------------*/
@@ -238,15 +246,58 @@
 @media all and (max-width: 480px) {
     /* styles for iPhone/Android landscape (and really narrow browser windows) */
     
+
+    .static .nav-block {
+        position: relative;
+    }
     .static .nav {
-        left: 2%;
-        top: 15px;
+        display: none;
+    }
+    .static .nav.active {
+        display: block;
+    }
+    .static .nav-block .menu, .static .nav {
+        background: #29ABE2;
+    }
+    .static .nav li, .static .nav-block .menu {
+        text-shadow: 0 1px 0 #1B6F93;
+    }
+    .static .nav-block .menu {
+        display: block;
+        position: absolute;
+        right: 0;
+        width: 70px;
+        height: 20px;
+        padding: 8px 0;
+        bottom: -36px;
+        text-align: center;
+        
+        -webkit-border-radius: 0 0 0 5px;
+        -moz-border-radius: 0 0 0 5px;
+        border-radius: 0 0 0 5px;
+    }
+    .static .nav, .static .nav a {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+    .static .nav {
+        position: relative;
+        left: 0;
+        top: 0;
         margin: 0;
-        width: 96%;
-        background: rgba(0,0,0, 0.75);
     }
     .static .nav li {
-        padding: 6px 0;
+        float: none;
+        margin: 0;
+        border-bottom: 1px solid #2392C0;
+    }
+    .static .nav .active a {
+        background: #259ACB;
+    }
+    .static .nav a {
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
     
     .static .video-block {
@@ -323,26 +374,6 @@
 }
 
 
-
-/*
-@media all and (max-width: 1024px) {
-    
-    .wrapper {
-        width: 100%;
-    }
-    html, body {
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-    }
-    .page {
-        min-width: 100%;
-        max-width: 768px;
-        width: auto;
-    }
-    
-}
-*/
 
 
 /*----------------------------------------------------------------------------------*/

@@ -45,54 +45,6 @@ $(document).ready(function() {
     }); // images loaded
     
     
-    /*
-    $window.on('mousewheel', function(event, delta) {
-        
-        counter++;
-        console.log(counter);
-        
-        
-        //if (flag == 0) {
-            
-            mouseScroll(delta);
-            
-        //}
-        
-        
-        function mouseScroll(delta) {
-            
-            //console.log('ex');
-            console.log(counter);
-            flag = 1;
-            
-            counter--;
-            
-            if (counter > 0) {
-                speed = 50;
-                mouseScroll(delta);
-                
-            }
-            else {
-                
-                flag = 0;
-                
-            }
-            if (delta > 0) {
-                $('html, body').animate({scrollTop: startSP - 15}, speed);
-                startSP = startSP - 50;
-            }
-            else {
-                $('html, body').animate({scrollTop: startSP + 15}, speed);
-                startSP = startSP + 50;
-            }
-            
-            console.log('stop');
-            speed = 150;
-            
-        }
-        return false;
-    });
-    */
     
     
     function alignLogo() {

@@ -138,6 +138,9 @@ select, input, textarea, input[type="password"], button {
 /*----------------------------------------------------------------------------------*/
 /*--------------------------------> Top navigation <--------------------------------*/
 /*----------------------------------------------------------------------------------*/
+.nav, .nav-block {
+    z-index: 100;
+}
 .nav {
     margin: 0 0 0 -312px;
     overflow: hidden;
@@ -145,7 +148,6 @@ select, input, textarea, input[type="password"], button {
     left: 50%;
     top: 37px;
     background: rgba(0,0,0, 0.1);
-    z-index: 100;
 }
 .nav li {
     float: left;
@@ -154,7 +156,7 @@ select, input, textarea, input[type="password"], button {
 .nav li:first-child {
     margin: 0;
 }
-.nav a {
+.nav a, .nav-block .menu {
     color: #FFF;
     padding: 2px 10px;
     font-weight: bold;

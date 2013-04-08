@@ -11,6 +11,11 @@ $(document).ready(function(){
     });
     
     
+    $('.nav-block .menu').on('click', function() {
+        $(this).siblings('.nav').toggleClass('active');
+    });
+    
+    
     $('[data-page-content="static"]').each(function() {
         
         alignMiddleStatic($(this));
