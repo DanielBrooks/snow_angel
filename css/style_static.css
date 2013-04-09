@@ -261,11 +261,11 @@
         margin: 0 0 0 -190px;
     }
     .static.page-home .page-content {
-        padding-top: 80px;
+        padding-top: 40px;
     }
     .static.page-home .logo {
-        width: 280px;
-        height: 114px;
+        width: 200px;
+        height: 81px;
     }
     .static.page-home .mobile-logo {
         display: inline;
@@ -275,7 +275,7 @@
     }
     
     .static.page-about .page-content {
-        padding-top: 230px;
+        padding: 180px 0 55px;
     }
     .static.page-about .umbrella {
         width: 480px;
@@ -284,15 +284,17 @@
         top: -134px;
         background: url(../images/mobile_umbrella.png) no-repeat;
     }
-    .static.page-about .rain-clouds-right {
+    .static.page-about .rain-clouds {
         display: none;
     }
+    /*
     .static.page-about .rain-clouds-left {
         width: 802px;
         height: 92px;
         margin: 0 0 0 -401px;
         background: url(../images/mobile_rain_clouds.png) no-repeat;
     }
+    */
     
     .static.page-clients .page-content {
         padding-top: 80px;
@@ -305,16 +307,31 @@
         background: url(../images/mobile_submarine.png) no-repeat;
     }
     .static.page-clients h2 {
-        padding-bottom: 45px;
+        padding-bottom: 5px;
+    }
+    .static.page-clients .clients-list {
+        width: 480px;
+    }
+    .static.page-clients .clients-list li {
+        width: 220px;
+        height: 80px;
+    }
+    .static.page-clients .clients-list li img {
+        max-height: 80px;
     }
     
+    .static.page-portfolio .page-content {
+        padding: 40px 0 0;
+    }
     .static.page-portfolio h2 span {
         display: block;
     }
+    .static.page-portfolio .moon {
+        display: none;
+    }
     
     .static.page-contacts .page-content {
-        padding-top: 142px;
-        padding-bottom: 50px;
+        padding: 50px 0;
     }
     .static.page-contacts .snow-hat {
         width: 324px;
@@ -332,10 +349,25 @@
         background-position: 0 -20px;
     }
     .static.page-contacts .divider {
+        float: right;
         display: none;
     }
+    
     .static.page-contacts .media-list {
-        padding-left: 60px;
+        padding: 17px 10px 0 0px;
+        float: right;
+    }
+    .static.page-contacts .media-list a {
+        width: 37px;
+        text-indent: 1000px;
+        overflow: hidden;
+    }
+    .static.page-contacts .contacts-list {
+        float: left;
+        padding: 42px 0 0 10px;
+    }
+    .static.page-contacts .contacts-list li.with-icon {
+        padding-left: 50px;
     }
     .static.page-contacts .hint-block {
         text-align: left;
@@ -347,13 +379,11 @@
     
     
     .static.page-make .page-content {
-        padding-top: 180px;
+        padding: 110px 0 50px;
     }
     .static.page-make h2 {
-        top: -110px;
-    }
-    .static.page-make h2 .break {
-        display: block;
+        top: -50px;
+        font-size: 18px;
     }
     .static.page-make h2 .icon {
         display: none;
@@ -373,6 +403,7 @@
     }
     .static.page-make .form-list textarea {
         width: 211px;
+        height: 65px;
     }
     .static.page-make .btn {
         width: 222px;
@@ -381,6 +412,9 @@
         width: 226px;
         top: -10px;
         background: url(../images/mobile_btn_snow_hat.png) no-repeat;
+    }
+    .static.page-make .snowman {
+        display: none;
     }
     .static.page-make .left-sun {
         background: url(../images/mobile_sun_decoration_top_n.png) no-repeat;
@@ -460,13 +494,6 @@
     }
     .static .ground-snow {
         bottom: -1px;
-    }
-    
-    .static.page-clients .clients-list {
-        width: 480px;
-    }
-    .static.page-clients .clients-list li {
-        width: 220px;
     }
     
     
