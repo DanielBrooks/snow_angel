@@ -734,7 +734,7 @@ select, input, textarea, input[type="password"], button {
     padding: 42px 0 0 22px;
     float: left;
 }
-.page-contacts .contacts-list span, .page-contacts .contacts-list a {
+.page-contacts .contacts-list .title, .page-contacts .contacts-list a {
     color: #FFF;
     text-shadow: 0 -2px rgba(0,0,0, 0.3);
     font-size: 18px;

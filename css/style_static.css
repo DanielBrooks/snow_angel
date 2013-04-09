@@ -370,8 +370,11 @@
         overflow: hidden;
     }
     .static.page-contacts .contacts-list {
-        float: left;
+        float: none;
         padding: 42px 0 65px 10px;
+    }
+    .static.page-contacts .contacts-list .title {
+        text-align: center;
     }
     .static.page-contacts .contacts-list li.with-icon {
         padding-left: 50px;
