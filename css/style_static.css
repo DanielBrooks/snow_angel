@@ -275,13 +275,13 @@
     }
     
     .static.page-about .page-content {
-        padding: 180px 0 55px;
+        padding: 160px 0 55px;
     }
     .static.page-about .umbrella {
         width: 480px;
-        height: 134px;
+        height: 114px;
         margin: 0 0 0 -240px;
-        top: -134px;
+        top: -114px;
         background: url(../images/mobile_umbrella.png) no-repeat;
     }
     .static.page-about .rain-clouds {
@@ -354,8 +354,15 @@
     }
     
     .static.page-contacts .media-list {
-        padding: 17px 10px 0 0px;
-        float: right;
+        padding: 0;
+        float: none;
+        position: absolute;
+        left: 20px;
+        bottom: 50px;
+    }
+    .static.page-contacts .media-list li {
+        float: left;
+        margin: 0 23px 0 0;
     }
     .static.page-contacts .media-list a {
         width: 37px;
@@ -364,7 +371,7 @@
     }
     .static.page-contacts .contacts-list {
         float: left;
-        padding: 42px 0 0 10px;
+        padding: 42px 0 65px 10px;
     }
     .static.page-contacts .contacts-list li.with-icon {
         padding-left: 50px;
