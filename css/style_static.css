@@ -8,6 +8,7 @@
 .static .textures {
     z-index: auto;
     background: none;
+    position: absolute;
 }
 .static .textures img {
     width: 100%;
@@ -31,6 +32,9 @@
 /*----------------------------------------------------------------------------------*/
 .static.page-home {
     background: #D5F7FE;
+}
+.static.page-home .mobile-logo {
+    display: none;
 }
 .static.page-home .page-content {
     padding: 100px 0 0;
@@ -197,7 +201,7 @@
 @media all and (max-width: 1024px) {
     /* styles for narrow desktop browsers and iPad landscape */
     
-     .wrapper {
+    .wrapper {
         width: 100%;
     }
     html, body {
@@ -213,6 +217,9 @@
     
     .static.page-clients .clients-list img {
         max-width: 100%;
+    }
+    .static .portfolio-nav a .pointer {
+        display: none !important;
     }
     
 }
@@ -246,7 +253,146 @@
 @media all and (max-width: 480px) {
     /* styles for iPhone/Android landscape (and really narrow browser windows) */
     
-
+    .static.page-home .sun-decoration {
+        background: url(../images/mobile_sun_decoration_top_n.png) no-repeat;
+        width: 380px;
+        height: 92px;
+        top: 0;
+        margin: 0 0 0 -190px;
+    }
+    .static.page-home .page-content {
+        padding-top: 80px;
+    }
+    .static.page-home .logo {
+        width: 280px;
+        height: 114px;
+    }
+    .static.page-home .mobile-logo {
+        display: inline;
+    }
+    .static.page-home .desktop-logo {
+        display: none;
+    }
+    
+    .static.page-about .page-content {
+        padding-top: 230px;
+    }
+    .static.page-about .umbrella {
+        width: 480px;
+        height: 134px;
+        margin: 0 0 0 -240px;
+        top: -134px;
+        background: url(../images/mobile_umbrella.png) no-repeat;
+    }
+    .static.page-about .rain-clouds-right {
+        display: none;
+    }
+    .static.page-about .rain-clouds-left {
+        width: 802px;
+        height: 92px;
+        margin: 0 0 0 -401px;
+        background: url(../images/mobile_rain_clouds.png) no-repeat;
+    }
+    
+    .static.page-clients .page-content {
+        padding-top: 80px;
+    }
+    .static.page-clients .page-content.relative .submarine {
+        width: 320px;
+        height: 50px;
+        top: 25px;
+        margin: 0 0 0 -160px;
+        background: url(../images/mobile_submarine.png) no-repeat;
+    }
+    .static.page-clients h2 {
+        padding-bottom: 45px;
+    }
+    
+    .static.page-portfolio h2 span {
+        display: block;
+    }
+    
+    .static.page-contacts .page-content {
+        padding-top: 142px;
+        padding-bottom: 50px;
+    }
+    .static.page-contacts .snow-hat {
+        width: 324px;
+        height: 19px;
+        left: -7px;
+        top: -10px;
+        background: url(../images/mobile_snow_hat.png) no-repeat;
+    }
+    .static.page-contacts .hanging-board {
+        width: 310px;
+        border-width: 2px;
+    }
+    .static.page-contacts .board-textures {
+        background-repeat: repeat-y;
+        background-position: 0 -20px;
+    }
+    .static.page-contacts .divider {
+        display: none;
+    }
+    .static.page-contacts .media-list {
+        padding-left: 60px;
+    }
+    .static.page-contacts .hint-block {
+        text-align: left;
+        padding-left: 30px;
+    }
+    .static.page-contacts .hint-block .icon {
+        left: -25px;
+    }
+    
+    
+    .static.page-make .page-content {
+        padding-top: 180px;
+    }
+    .static.page-make h2 {
+        top: -110px;
+    }
+    .static.page-make h2 .break {
+        display: block;
+    }
+    .static.page-make h2 .icon {
+        display: none;
+    }
+    .static.page-make .snow-hat {
+        width: 318px;
+        height: 22px;
+        top: -14px;
+        left: -13px;
+        background: url(../images/mobile_snow_hat_1.png) no-repeat;
+    }
+    .static.page-make .board-textures {
+        background: url(../images/mobile_bigboard_textures_second.png);
+    }
+    .static.page-make .standing-board {
+        width: 290px;
+    }
+    .static.page-make .form-list textarea {
+        width: 211px;
+    }
+    .static.page-make .btn {
+        width: 222px;
+    }
+    .static.page-make .btn .btn-snow-hat {
+        width: 226px;
+        top: -10px;
+        background: url(../images/mobile_btn_snow_hat.png) no-repeat;
+    }
+    .static.page-make .left-sun {
+        background: url(../images/mobile_sun_decoration_top_n.png) no-repeat;
+        width: 380px;
+        height: 92px;
+        top: 0;
+        margin: 0 0 0 -190px;
+    }
+    .static.page-make .left-sun span, .static.page-make .right-sun {
+        display: none;
+    }
+    
     .static .nav-block {
         position: relative;
     }
@@ -296,8 +442,8 @@
         background: #259ACB;
     }
     .static .nav a {
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     
     .static .video-block {
@@ -316,17 +462,11 @@
         bottom: -1px;
     }
     
-    .static.page-clients .page-content {
-        padding: 140px 0 0;
-    }
     .static.page-clients .clients-list {
         width: 480px;
     }
     .static.page-clients .clients-list li {
         width: 220px;
-    }
-    .static.page-clients h2 {
-        padding-bottom: 45px;
     }
     
     
@@ -335,6 +475,23 @@
     }
     .portfolio-list li {
         margin-left: 94px;
+    }
+    
+    /*
+    .lightbox {
+        margin: -160px 0 0 -240px;
+    }
+    .lightbox, .lightbox iframe {
+        width: 480px;
+        height: 320px;
+    }
+    */
+    .lightbox {
+        margin: -120px 0 0 -160px;
+    }
+    .lightbox, .lightbox iframe {
+        width: 320px;
+        height: 240px;
     }
 }
 

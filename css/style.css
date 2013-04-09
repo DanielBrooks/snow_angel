@@ -525,7 +525,7 @@ select, input, textarea, input[type="password"], button {
     border-color: #FFF transparent transparent;
     opacity: 0.15;
 }
-.portfolio-nav a:hover .pointer, .portfolio-nav .ui-state-active a .pointer {
+.portfolio-nav .ui-state-hover a .pointer, .portfolio-nav .ui-state-active a .pointer {
     display: block;
 }
 
