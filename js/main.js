@@ -385,6 +385,11 @@ $(document).ready(function() {
                     
                 } // in view
                 
+                if ( ($window.scrollTop() + $window.height()) < (dataTopOffset + $self.height() * dataDelay) ) {
+                    
+                    $self.css('opacity', 1);
+                    
+                }
             }); // window scroll
             
         }

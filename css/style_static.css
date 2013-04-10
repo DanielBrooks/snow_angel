@@ -43,33 +43,7 @@
     background: url(../images/sprite_decorations.png) 0 -700px no-repeat;
     height: 250px;
     top: -25px;
-    
-    /*
-    height: 0;
-    min-width: 1024px;
-    width: 100%;
-    margin: 0;
-    left: 0;
-    */
 }
-
-/*
-.static.page-home .sun-decoration .decor {
-    height: 250px;
-    top: -25px;
-}
-.static.page-home .sun-decoration .left {
-    width: 455px;
-    left: 0;
-    background: url(../images/sprite_decorations.png) 0 -700px no-repeat;
-}
-.static.page-home .sun-decoration .right {
-    width: 384px;
-    left: auto;
-    right: 0;
-    background: url(../images/sprite_decorations.png) -948px -700px no-repeat;
-}
-*/
 
 
 /*----------------------------------------------------------------------------------*/
@@ -122,23 +96,9 @@
 }
 .static.page-clients .clients-list li span {
     display: block;
-    /*
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    */
 }
-/*
-.static.page-clients .clients-list li span a {
-    display: inline-block;
-    position: relative;
-}
-.static.page-clients .clients-list li span a img {
-    margin-top: -25%;
-    display: block;
-}
-*/
+
+
 /*----------------------------------------------------------------------------------*/
 /*--------------------------------> Portfolio page <--------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -189,7 +149,6 @@
     max-width: 1316px;
     width: 100%;
 }
-
 
 
 /*----------------------------------------------------------------------------------*/
@@ -254,7 +213,7 @@
     /* styles for iPhone/Android landscape (and really narrow browser windows) */
     
     .static.page-home .sun-decoration {
-        background: url(../images/mobile_sun_decoration_top_n.png) no-repeat;
+        background: url(../images/sprite_decorations.png) -1500px -1350px no-repeat;
         width: 380px;
         height: 92px;
         top: 0;
@@ -282,19 +241,11 @@
         height: 114px;
         margin: 0 0 0 -240px;
         top: -114px;
-        background: url(../images/mobile_umbrella.png) no-repeat;
+        background: url(../images/sprite_decorations.png) -800px -250px no-repeat;
     }
     .static.page-about .rain-clouds {
         display: none;
     }
-    /*
-    .static.page-about .rain-clouds-left {
-        width: 802px;
-        height: 92px;
-        margin: 0 0 0 -401px;
-        background: url(../images/mobile_rain_clouds.png) no-repeat;
-    }
-    */
     
     .static.page-clients .page-content {
         padding-top: 80px;
@@ -304,7 +255,7 @@
         height: 50px;
         top: 25px;
         margin: 0 0 0 -160px;
-        background: url(../images/mobile_submarine.png) no-repeat;
+        background: url(../images/sprite_decorations.png) -1500px -1450px no-repeat;
     }
     .static.page-clients h2 {
         padding-bottom: 5px;
@@ -338,7 +289,7 @@
         height: 19px;
         left: -7px;
         top: -10px;
-        background: url(../images/mobile_snow_hat.png) no-repeat;
+        background: url(../images/sprite_decorations.png) -700px -50px no-repeat;
     }
     .static.page-contacts .hanging-board {
         width: 310px;
@@ -402,8 +353,8 @@
         width: 318px;
         height: 22px;
         top: -14px;
-        left: -13px;
-        background: url(../images/mobile_snow_hat_1.png) no-repeat;
+        left: -12px;
+        background: url(../images/sprite_decorations.png) -1100px -50px no-repeat;
     }
     .static.page-make .board-textures {
         background: url(../images/mobile_bigboard_textures_second.png);
@@ -421,13 +372,13 @@
     .static.page-make .btn .btn-snow-hat {
         width: 226px;
         top: -10px;
-        background: url(../images/mobile_btn_snow_hat.png) no-repeat;
+        background: url(../images/sprite_decorations.png) -1250px 0 no-repeat;
     }
     .static.page-make .snowman {
         display: none;
     }
     .static.page-make .left-sun {
-        background: url(../images/mobile_sun_decoration_top_n.png) no-repeat;
+        background: url(../images/sprite_decorations.png) -1500px -1350px no-repeat;
         width: 380px;
         height: 92px;
         top: 0;
@@ -443,11 +394,6 @@
     .static .nav {
         display: none;
     }
-    /*
-    .static .nav.active {
-        display: block;
-    }
-    */
     .static .nav-block .menu, .static .nav {
         background: #29ABE2;
     }
@@ -516,15 +462,6 @@
         margin-left: 94px;
     }
     
-    /*
-    .lightbox {
-        margin: -160px 0 0 -240px;
-    }
-    .lightbox, .lightbox iframe {
-        width: 480px;
-        height: 320px;
-    }
-    */
     .lightbox {
         margin: -120px 0 0 -160px;
     }
@@ -560,16 +497,11 @@
         margin-left: 14px;
     }
 
-
-
-
 }
 
 @media all and (max-width: 240px) {
     /* styles for smaller devices */
 }
-
-
 
 
 /*----------------------------------------------------------------------------------*/

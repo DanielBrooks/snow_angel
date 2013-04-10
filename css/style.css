@@ -67,13 +67,6 @@ select, input, textarea, input[type="password"], button {
 }
 
 
-
-.scale {
-    -webkit-transform: scale(1.3);
-    -moz-transform: scale(1.3);
-    -ms-transform: scale(1.3);
-    -o-transform: scale(1.3);
-}
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------> Custom fonts <--------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -314,9 +307,6 @@ select, input, textarea, input[type="password"], button {
     -moz-transition-duration: 1s;
     -moz-transition-delay: 0;
     
-    /*
-    background: url(../images/sun_decoration_top.png) no-repeat;
-    */
 }
 .page-home .sun-decoration.left {
     left: 0;
@@ -1044,15 +1034,6 @@ select, input, textarea, input[type="password"], button {
 
 .page-make .ground-snow {
     width: 100%;
-    /*
-    height: 45px;
-    background: url(../images/ground_snow_cover.png) no-repeat;
-    
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;     
-    */
     left: 0;
     bottom: 0;
 }
