@@ -4,15 +4,20 @@ $(document).ready(function(){
     $window = $(window);
     
     
-    $window.on('debouncedresize', function() {
+    $window.on('resize', function() {
         
-        //window.location.href=window.location.href;
+        if ($('.nav-block .menu').css('display') == 'none') {
+            
+            $('.nav').removeAttr('style');
+            
+        }
         
     });
     
     
     $('.nav-block .menu').on('click', function() {
-        $(this).siblings('.nav').toggleClass('active');
+        //$(this).siblings('.nav').toggleClass('active');
+        $(this).siblings('.nav').animate({height: 'toggle'});
     });
     
     

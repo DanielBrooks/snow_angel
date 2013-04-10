@@ -443,9 +443,11 @@
     .static .nav {
         display: none;
     }
+    /*
     .static .nav.active {
         display: block;
     }
+    */
     .static .nav-block .menu, .static .nav {
         background: #29ABE2;
     }
